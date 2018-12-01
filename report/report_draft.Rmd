@@ -1,6 +1,6 @@
 ---
 title: "Identifying Drawings with the Quick Draw Challenge"
-author: "Blue Team"
+author: "Group 3"
 output: 
   pdf_document:
     keep_tex: yes
@@ -10,12 +10,24 @@ bibliography: references.bib
 We're trying to put together a CNN based on the "Quick, Draw!" Kaggle
 competition [@QuickDra10].
 
-# Theory & Literature Review
+# Introduction
 
-CNN with dilation is preferable to LSTM because it's presumably
-faster. We can cite some papers here. 
+Our team has based our project idea on the "Quick, Draw!" Kaggle competition 
+which classifies user drawings into one of 345 label categories. Many drawings 
+were incomplete or failed to match the label. The challenge was to effectively 
+build a recognizer that could work with this noisy data. The challenge was unique 
+from an algorithmic perspective because the data included both temporal and 
+spatial components; areas that have traditionally used two different 
+types of Neural Network Architectures. Our team attempted to provide a solution 
+using a subset of the data, to the Kaggle problem, while taking a more in depth 
+look at potential pitfalls and modeling strategy, without having to use 
+extensive computational resources.
 
-# Hypotheses
+# Methods
+
+First, we got our data from Google/Kaggle. CNNs are traditionally known to work
+well with spatial data, which prompted us to process the original csv files to 
+images of the drawings.
 
 Maybe we should structure our models as experiments. Then talk 
 about what worked the best. Here's some example hypotheses
@@ -23,11 +35,15 @@ about what worked the best. Here's some example hypotheses
 $H_a:$ Prediction will go up when we use a CNN compared to a fully
 	connected feedforward neural network.
 
-$H_a:$ Prediction will go up when we use regularization
+$H_a:$ Prediction will go up when we use regularization.
 
-# Data
+$H_a:$ Run neural networks without any activations.
 
-We got our data from Google/Kaggle
+$H_a:$ Try different architectures- number of layers, different (or no) 
+activations
+
+$H_a:$ CNN with dilation is preferable to LSTM because it's presumably
+faster. We can cite some papers here.
 
 # Results
 
@@ -39,5 +55,12 @@ hypotheses
 Here's what worked the best, worst, and future areas for research.
 
 # References
+
+# Appendix
+
+Add computer code, plots, and other relevant technical details that will help
+me evaluating your work.
+
+# Statement of contribution
 
 
