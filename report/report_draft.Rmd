@@ -1,0 +1,43 @@
+---
+title: "Identifying Drawings with the Quick Draw Challenge"
+author: "Blue Team"
+output: 
+  pdf_document:
+    keep_tex: yes
+bibliography: references.bib
+---
+
+We're trying to put together a CNN based on the "Quick, Draw!" Kaggle
+competition [@QuickDra10].
+
+# Theory & Literature Review
+
+CNN with dilation is preferable to LSTM because it's presumably
+faster. We can cite some papers here. 
+
+# Hypotheses
+
+Maybe we should structure our models as experiments. Then talk 
+about what worked the best. Here's some example hypotheses
+
+$H_a:$ Prediction will go up when we use a CNN compared to a fully
+	connected feedforward neural network.
+
+$H_a:$ Prediction will go up when we use regularization
+
+# Data
+
+We got our data from Google/Kaggle
+
+# Results
+
+Here's how the results performed when we were exploring our 
+hypotheses
+
+# Discussion
+
+Here's what worked the best, worst, and future areas for research.
+
+# References
+
+
