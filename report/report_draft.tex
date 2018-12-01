@@ -25,7 +25,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Identifying Drawings with the Quick Draw Challenge},
-            pdfauthor={Blue Team},
+            pdfauthor={Group 3},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -76,7 +76,7 @@
   \title{Identifying Drawings with the Quick Draw Challenge}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{Blue Team}
+  \author{Group 3}
   \preauthor{\centering\large\emph}
   \postauthor{\par}
   \date{}
@@ -89,14 +89,25 @@
 We're trying to put together a CNN based on the ``Quick, Draw!'' Kaggle
 competition (Google 2018).
 
-\hypertarget{theory-literature-review}{%
-\section{Theory \& Literature Review}\label{theory-literature-review}}
+\section{Introduction}\label{introduction}
 
-CNN with dilation is preferable to LSTM because it's presumably faster.
-We can cite some papers here.
+Our team has based our project idea on the ``Quick, Draw!'' Kaggle
+competition which classifies user drawings into one of 345 label
+categories. Many drawings were incomplete or failed to match the label.
+The challenge was to effectively build a recognizer that could work with
+this noisy data. The challenge was unique from an algorithmic
+perspective because the data included both temporal and spatial
+components; areas that have traditionally used two different types of
+Neural Network Architectures. Our team attempted to provide a solution
+using a subset of the data, to the Kaggle problem, while taking a more
+in depth look at potential pitfalls and modeling strategy, without
+having to use extensive computational resources.
 
-\hypertarget{hypotheses}{%
-\section{Hypotheses}\label{hypotheses}}
+\section{Methods}\label{methods}
+
+First, we got our data from Google/Kaggle. CNNs are traditionally known
+to work well with spatial data, which prompted us to process the
+original csv files to images of the drawings.
 
 Maybe we should structure our models as experiments. Then talk about
 what worked the best. Here's some example hypotheses
@@ -104,29 +115,36 @@ what worked the best. Here's some example hypotheses
 \(H_a:\) Prediction will go up when we use a CNN compared to a fully
 connected feedforward neural network.
 
-\(H_a:\) Prediction will go up when we use regularization
+\(H_a:\) Prediction will go up when we use regularization.
 
-\hypertarget{data}{%
-\section{Data}\label{data}}
+\(H_a:\) Run neural networks without any activations.
 
-We got our data from Google/Kaggle
+\(H_a:\) Try different architectures- number of layers, different (or
+no) activations
 
-\hypertarget{results}{%
-\section{Results}\label{results}}
+\(H_a:\) CNN with dilation is preferable to LSTM because it's presumably
+faster. We can cite some papers here.
+
+\section{Results}\label{results}
 
 Here's how the results performed when we were exploring our hypotheses
 
-\hypertarget{discussion}{%
-\section{Discussion}\label{discussion}}
+\section{Discussion}\label{discussion}
 
 Here's what worked the best, worst, and future areas for research.
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
-\addcontentsline{toc}{section}{References}
+\section{References}\label{references}
+
+\section{Appendix}\label{appendix}
+
+Add computer code, plots, and other relevant technical details that will
+help me evaluating your work.
+
+\section*{Statement of contribution}\label{statement-of-contribution}
+\addcontentsline{toc}{section}{Statement of contribution}
 
 \hypertarget{refs}{}
-\leavevmode\hypertarget{ref-QuickDra10}{}%
+\hypertarget{ref-QuickDra10}{}
 Google. 2018. ``Quick, Draw! Doodle Recognition Challenge \textbar{}
 Kaggle.'' \url{https://www.kaggle.com/c/quickdraw-doodle-recognition}.
 
