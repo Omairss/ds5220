@@ -45,6 +45,8 @@ activations
 $H_a:$ CNN with dilation is preferable to LSTM because it's presumably
 faster. We can cite some papers here.
 
+Try out: Overfitting, Bias/variance, imbalance, dropout, pushing activation
+
 # Results
 
 Here's how the results performed when we were exploring our 
