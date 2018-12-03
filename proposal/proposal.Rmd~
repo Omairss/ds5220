@@ -1,0 +1,16 @@
+---
+title: "DS 5220 Project Proposal"
+author: "Chaitya Shah, Tyler Brown, Karan , Omair Shafi Ahmed; MSDS 19'"
+output: pdf_document
+---
+
+Our team is basing our project idea on the "Quick, Draw!" Kaggle competition which classifies 
+user drawings into one of 340 label categories. Drawings may be incomplete or not match the label.
+The challenge is to effectively build a recognizer that can work with this noisy data. The challenge
+is unique from an algorithmic perspective because the data includes both time series and pattern
+recognition components; areas that have traditionally used two different types of Neural Network
+Architectures. 
+
+
+
+
