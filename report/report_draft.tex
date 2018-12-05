@@ -91,6 +91,10 @@ competition (Google 2018).
 
 \section{Introduction}\label{introduction}
 
+Provide a short background of the project (e.g., what kind of question
+is to be answered with this work). Provide a short non-technical summary
+of your analytical strategy.
+
 Our team has based our project idea on the ``Quick, Draw!'' Kaggle
 competition which classifies user drawings into one of 345 label
 categories. Many drawings were incomplete or failed to match the label.
@@ -101,16 +105,24 @@ components; areas that have traditionally used two different types of
 Neural Network Architectures. Our team attempted to provide a solution
 using a subset of the data, to the Kaggle problem, while taking a more
 in depth look at potential pitfalls and modeling strategy, without
-having to use extensive computational resources.
+having to use extensive computational resources. With this project, we
+explore image classification in depth. We try out various experiments
+like fully connected neural network vs CNN, bias vs.~variance tradeoff,
+overfitting data purposefully and trying out techniques like
+regularization and dropout to fix overfitting and finally, testing
+neural network with imbalanced data.
 
 \section{Methods}\label{methods}
 
-First, we got our data from Google/Kaggle. CNNs are traditionally known
-to work well with spatial data, which prompted us to process the
-original csv files to images of the drawings.
+First, let's talk about data collection. Google initially compressed and
+converted the images to .npy files. These .npy files are basically 28*28
+images, containing more than 100,000 rows each.
 
-Maybe we should structure our models as experiments. Then talk about
-what worked the best. Here's some example hypotheses
+So here are the experiments we performed.
+
+\subsubsection{EDA}\label{eda}
+
+We checked the We plotted images from several categories
 
 \(H_a:\) Prediction will go up when we use a CNN compared to a fully
 connected feedforward neural network.
