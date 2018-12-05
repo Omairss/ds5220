@@ -1,0 +1,78 @@
+---
+title: "Quick, Draw! Challenge"
+subtitle: DS 5220
+author: "Blue team"
+output:
+  revealjs::revealjs_presentation:
+    theme: simple
+    highlight: pygments
+    center: true
+---
+
+## Problem to Solve: Quick, Draw! Image Classification
+
+* We focus on a subset of the Kaggle competition
+  - Image classification vs. identifying sequences when drawing
+
+## Our Strategy
+
+* Bias vs. Variance
+  - Overfitting 
+  - Underfitting
+* Multi-Class Classification
+  - Accurcy vs. Number of Classes
+  - Imbalanced classes
+* Neural Network Architecture
+  - Fully Connected Neural Network
+  - Convolutional Neural Network (CNN)
+
+# Bias vs. Variance
+
+## Seeing the Big Picture
+
+* Neural Networks differ from many other models in
+  that bias vs. variance is less of a tradeoff
+  
+  - We can fix bias, then separately fix variance
+
+## Overfitting
+
+* overfitting is bad and here's how it happens
+* here's how we dealt with it 
+
+## Underfitting
+
+* also bad, here's how we deal with it
+
+# Multi-Class Classification
+
+## Why is this necessary?
+
+* We need to classify multiple quickly drawn images
+
+## Accurcy vs. Number of Classes
+
+* Accuracy seemed to go down as the number 
+  of classes went up
+
+## Imbalanced classes
+
+* Also bad, used under-sampling
+
+# Neural Network Architecture
+
+## Fully Connected Neural Network
+
+* Designed using Tensorflow without Keras
+
+## Convolutional Neural Network (CNN)
+
+* Designed using Keras with Tensorflow backend
+
+# Summary
+
+## Recommendations
+
+* Neural networks are good for classifying images containing a hotdog
+
+# Thank you! Any questions?
