@@ -29,6 +29,7 @@
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -89,7 +90,8 @@
 We're trying to put together a CNN based on the ``Quick, Draw!'' Kaggle
 competition (Google 2018).
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Provide a short background of the project (e.g., what kind of question
 is to be answered with this work). Provide a short non-technical summary
@@ -112,7 +114,8 @@ overfitting data purposefully and trying out techniques like
 regularization and dropout to fix overfitting and finally, testing
 neural network with imbalanced data.
 
-\section{Methods}\label{methods}
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
 
 First, let's talk about data collection. Google initially compressed and
 converted the images to .npy files. These .npy files are basically 28*28
@@ -120,46 +123,82 @@ images, containing more than 100,000 rows each.
 
 So here are the experiments we performed.
 
-\subsubsection{EDA}\label{eda}
+\hypertarget{eda}{%
+\subsubsection{EDA}\label{eda}}
 
 We checked the We plotted images from several categories
 
-\(H_a:\) Prediction will go up when we use a CNN compared to a fully
+\(H1_a:\) Prediction will go up when we use a CNN compared to a fully
 connected feedforward neural network.
 
-\(H_a:\) Prediction will go up when we use regularization.
+\(H2_a:\) Prediction will go up when we use regularization.
 
-\(H_a:\) Run neural networks without any activations.
+\(H3_a:\) Run neural networks without any activations.
 
-\(H_a:\) Try different architectures- number of layers, different (or
+\(H4_a:\) Try different architectures- number of layers, different (or
 no) activations
 
-\(H_a:\) CNN with dilation is preferable to LSTM because it's presumably
-faster. We can cite some papers here.
+\(H5_a:\) CNN with dilation is preferable to LSTM because it's
+presumably faster. We can cite some papers here.
 
 Try out: Overfitting, Bias/variance, imbalance, dropout, pushing
 activation
 
-\section{Results}\label{results}
+\hypertarget{results}{%
+\section{Results}\label{results}}
 
 Here's how the results performed when we were exploring our hypotheses
 
-\section{Discussion}\label{discussion}
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Hypothesis & Result\tabularnewline
+\midrule
+\endhead
+\(H1_a\) & Accept\tabularnewline
+\(H2_a\) & Fail to Accept\tabularnewline
+\(H3_a\) & Fail to Accept\tabularnewline
+\(H4_a\) & Accept\tabularnewline
+\(H5_a\) & Fail to Accept\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{fully-connected-neural-network}{%
+\subsection{Fully Connected Neural
+Network}\label{fully-connected-neural-network}}
+
+Here's the run down on it and how it relates to the hypotheses.
+
+\hypertarget{convolutional-neural-network}{%
+\subsection{Convolutional Neural
+Network}\label{convolutional-neural-network}}
+
+same thing for the CNN. TOOD: can we fold in some of the specializations
+into this section??
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
 
 Here's what worked the best, worst, and future areas for research.
 
-\section{References}\label{references}
+The model built using CNN was better than human accuracy, which was in
+turn better than the model built using fully connected network.
 
-\section{Appendix}\label{appendix}
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\hypertarget{appendix}{%
+\section{Appendix}\label{appendix}}
 
 Add computer code, plots, and other relevant technical details that will
 help me evaluating your work.
 
-\section*{Statement of contribution}\label{statement-of-contribution}
-\addcontentsline{toc}{section}{Statement of contribution}
+\hypertarget{statement-of-contribution}{%
+\section{Statement of contribution}\label{statement-of-contribution}}
+
+Everyone worked on everything.
 
 \hypertarget{refs}{}
-\hypertarget{ref-QuickDra10}{}
+\leavevmode\hypertarget{ref-QuickDra10}{}%
 Google. 2018. ``Quick, Draw! Doodle Recognition Challenge \textbar{}
 Kaggle.'' \url{https://www.kaggle.com/c/quickdraw-doodle-recognition}.
 

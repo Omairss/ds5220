@@ -45,17 +45,17 @@ So here are the experiments we performed.
 
 We checked the We plotted images from several categories 
 
-$H_a:$ Prediction will go up when we use a CNN compared to a fully
+$H1_a:$ Prediction will go up when we use a CNN compared to a fully
 	connected feedforward neural network.
 
-$H_a:$ Prediction will go up when we use regularization.
+$H2_a:$ Prediction will go up when we use regularization.
 
-$H_a:$ Run neural networks without any activations.
+$H3_a:$ Run neural networks without any activations.
 
-$H_a:$ Try different architectures- number of layers, different (or no) 
+$H4_a:$ Try different architectures- number of layers, different (or no) 
 activations
 
-$H_a:$ CNN with dilation is preferable to LSTM because it's presumably
+$H5_a:$ CNN with dilation is preferable to LSTM because it's presumably
 faster. We can cite some papers here.
 
 Try out: Overfitting, Bias/variance, imbalance, dropout, pushing activation
@@ -64,6 +64,24 @@ Try out: Overfitting, Bias/variance, imbalance, dropout, pushing activation
 
 Here's how the results performed when we were exploring our 
 hypotheses
+
+| Hypothesis | Result         |
+| ---------- | -------------- |
+| $H1_a$     | Accept         |
+| $H2_a$     | Fail to Accept |
+| $H3_a$     | Fail to Accept |
+| $H4_a$     | Accept         |
+| $H5_a$     | Fail to Accept |
+
+## Fully Connected Neural Network
+
+Here's the run down on it and how it relates
+to the hypotheses. 
+
+## Convolutional Neural Network
+
+same thing for the CNN. TOOD: can we fold in some of
+the specializations into this section??
 
 # Discussion
 
