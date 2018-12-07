@@ -217,7 +217,9 @@ below:
 \subsection{Hypotheses}
 
 We have generated the following hypotheses based on theoretical
-expectations:
+expectations expressed in the literature \cite{Goodfellow-et-al-2016,
+  DeepLear51:online}. Performance is effected by both the model and
+data \cite{DeepLear51:online} so our hypotheses pertain to both effects.
 
 \subsubsection{Addressing model component of performance}
 
@@ -238,8 +240,6 @@ expectations:
 \item[$H6_a$] Adding more training data will improve the performance of the
   model.
 \end{itemize}
-
-TODO: more context would be helpful here, maybe some citations
 
 \subsection{Data}
 
@@ -269,6 +269,53 @@ airplane, alarm clock, baseball bat, bicycle, dolphin, elephant. We had
 categories.
 
 
+\subsection{Modeling Strategy}
+
+We provide our modeling strategy as it relates to the exploration of
+our stated hypotheses.
+
+\subsubsection{Baseline image classification using humans}
+
+Two group members completed a Human Intelligence Task by manually
+classifying images into one of our ten defined categories. This
+approach helped us get a benchmark which we could use to
+define ``reasonable accuracy''. 
+
+\subsubsection{$H1_a$: Fully connected neural network will struggle
+  to get reasonable accuracy}
+
+In order to perform this experiment, we built a fully connected neural network
+using Tensorflow. Our train:test split was chosen to be 80:20, an industry
+standard. Our initial objective was to build a model that overfit our given
+dataset, with the idea that once our model is complex enough to overfit the
+training data, we could regularize it in order to achieve a more optimal fit.
+The fully connected neural network had 20,067 parameters.
+
+After experimenting with various architectures, we narrowed down to a 3 layer
+model as specified in Figure \ref{fig:fcnn} in the Appendix. The model was
+run on a machine with 13 GB of RAM, Intel Xeon CPU 2.3 GHz (1 core, 2
+threads), 1xTesla K80 GPU having 2496 CUDA cores with 12 GB GDDR5 VRAM.
+
+\subsubsection{$H2_a$ CNN should perform better than fully connected neural
+  network}
+
+As for the CNN, we started off with the same approach with attempting
+to overfit the model using convolution operations and a fully connected
+layer with an objective to categorise 10 categories, softmax was chosen
+as the activation function for the final layer, while every other neuron
+had ReLU as the activation function owing to ReLU’s faster convergence. See
+Figure \ref{fig:cnnArch} for a representation of this first CNN model.
+
+The number of parameters is much greater than the number of observations
+used to train the model resulting in overfitting. In order to reduce the
+number of parameters, we incorporated Pooling (Max Pooling) post each
+convolution operation extracting only the most significant features
+resulting in reduction of the volume of the convolutional output, giving
+the model a smaller memory footprint as well as a smaller number of
+trainable parameters. Figure \ref{fig:cnnArchPool} has a representation of this
+second CNN model. We employ strategies to reduce overfitting related to
+dropouts and stride in addition to adding more training data.
+
 \section{Results}
 
 We report our results by examining the validity of each hypothesis.
@@ -286,13 +333,6 @@ data, we could regularize it in order to achieve a more optimal fit.
 After experimenting with various architectures, we narrowed down to a 3 layer
 model as specified in Figure \ref{fig:fcnn}.
 
-\begin{figure}[h]
-  \begin{center}
-    \includegraphics[scale=0.75]{fig2}
-    \end{center}
-  \caption{Fully Connected Neural Network Architecture}
-  \label{fig:fcnn}
-  \end{figure}
 
 The training set accuracy observed was 93\%, while the test accuracy was at
 73\%, which clearly indicated an overfit in the model, as designed.
@@ -316,13 +356,6 @@ Since our objective is to categorise 10 categories, softmax was chosen as the
 activation function for the final layer, while every other neuron had ReLU as
 the activation function owing to ReLU’s faster convergence.
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[scale=0.5]{fig3}
-    \end{center}
-  \caption{CNN Architecture}
-  \label{fig:cnnArch}
-\end{figure}
 
 
 
@@ -337,13 +370,6 @@ order to extract only the most significant features. As as a consequence,
 this reduced the volume of the output, giving the model a smaller memory
 footprint as well as a smaller number of trainable parameters.
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[scale=0.5]{fig4}
-  \end{center}
-  \caption{CNN Architecture with Reduced Parameters}
-  \label{fig:cnnArchPool}
-\end{figure}
 
 The observable training accuracy is 0.90, whereas the validation accuracy is
 0.89. The model converged after 10 epochs, which took ~ 3 minutes.
@@ -372,6 +398,32 @@ Talk about our final slide and tie the hypotheses together
 \bibliography{references}
 
 \section{Appendix}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.75]{fig2}
+    \end{center}
+  \caption{Fully Connected Neural Network Architecture}
+  \label{fig:fcnn}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig3}
+    \end{center}
+  \caption{(CNN Model 1) Loss Function: Categorical Cross Entropy, Optimizer:
+    Adam, Trainable Parameters: 320,890}
+  \label{fig:cnnArch}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig4}
+  \end{center}
+  \caption{(CNN Model 2) Loss Function: Categorical Cross Entropy, Optimizer:
+    Adam, Trainable Parameters: 19,322}
+  \label{fig:cnnArchPool}
+\end{figure}
 
 \begin{figure}[h!]
   \begin{center}
