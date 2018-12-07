@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 DEC 2018 11:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 DEC 2018 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -298,48 +298,80 @@ File: ./imgs/fig1.png Graphic file (type png)
 <use ./imgs/fig1.png>
 Package pdftex.def Info: ./imgs/fig1.png  used on input line 151.
 (pdftex.def)             Requested size: 289.58116pt x 77.28854pt.
- [3 <./imgs/fig1.png>]
-<./imgs/fig2.png, id=21, 594.22pt x 196.735pt>
+<./imgs/fig2.png, id=17, 594.22pt x 196.735pt>
 File: ./imgs/fig2.png Graphic file (type png)
 <use ./imgs/fig2.png>
 Package pdftex.def Info: ./imgs/fig2.png  used on input line 179.
 (pdftex.def)             Requested size: 445.66391pt x 147.55087pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3 <./imgs/fig1.png>]
 <./imgs/fig3.png, id=22, 637.38126pt x 104.39pt>
 File: ./imgs/fig3.png Graphic file (type png)
 <use ./imgs/fig3.png>
 Package pdftex.def Info: ./imgs/fig3.png  used on input line 209.
 (pdftex.def)             Requested size: 318.68985pt x 52.19485pt.
- [4 <./imgs/fig2.png>]
-<./imgs/fig4.png, id=27, 634.37pt x 100.375pt>
+ [4 <./imgs/fig2.png> <./imgs/fig3.png>]
+<./imgs/fig4.png, id=28, 634.37pt x 100.375pt>
 File: ./imgs/fig4.png Graphic file (type png)
 <use ./imgs/fig4.png>
-Package pdftex.def Info: ./imgs/fig4.png  used on input line 230.
+Package pdftex.def Info: ./imgs/fig4.png  used on input line 281.
 (pdftex.def)             Requested size: 317.18422pt x 50.18736pt.
+ [5] (./draft.bbl
+! Undefined control sequence.
+l.7 \newblock \url
+                  {http://www.deeplearningbook.org}.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-No file draft.bbl.
-[5 <./imgs/fig3.png> <./imgs/fig4.png>] (./draft.aux)
+! Undefined control sequence.
+l.12 \newblock \url
+                   {https://keras.io}, 2015.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+! Undefined control sequence.
+l.31 \newblock \url
+                   {https://www.coursera.org/specializations/deep-learning},...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
- ) 
+[6 <./imgs/fig4.png>]) [7] (./draft.aux) ) 
 Here is how much of TeX's memory you used:
- 4230 strings out of 492649
- 60361 string characters out of 6129622
- 133377 words of memory out of 5000000
- 8050 multiletter control sequences out of 15000+600000
- 12403 words of font info for 48 fonts, out of 8000000 for 9000
+ 4242 strings out of 492649
+ 60532 string characters out of 6129622
+ 133389 words of memory out of 5000000
+ 8059 multiletter control sequences out of 15000+600000
+ 12750 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,39p,378b,285s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on draft.pdf (5 pages, 268490 bytes).
+ 41i,7n,39p,378b,285s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmti12.pfb>
+Output written on draft.pdf (7 pages, 318494 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 31 compressed objects within 1 object stream
+ 81 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

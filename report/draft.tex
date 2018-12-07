@@ -93,8 +93,8 @@ Google's ``Quick, Draw!'' dataset.
 
 \section{Methods}
 
-We generate hypotheses based on expectations related to model performance. We
-then conduct preprocessing steps on our data.
+Our methodology consists of reviewing statistical methodology, presenting
+theoretically informed hypotheses, and providing an overview of our data.
 
 \subsection{Overview of Statistical Modeling Techniques}
 
@@ -114,23 +114,23 @@ expectations:
 
 \subsubsection{Addressing model component of performance}
 
-\begin{align*}
-  H1_a: &\text{Fully Connected Neural Network will struggle} \\
-  &\text{ to get reasonable accuracy.} \\
-  H2_a: &\text{CNN should perform better than fully} \\
-  &\text{connected neural network.} \\
-\end{align*}
+\begin{itemize}
+  \item[$H1_a$] Fully Connected Neural Network will struggle to get reasonable
+    accuracy.
+  \item[$H2_a$] CNN should perform better than fully connected neural network.
+  \end{itemize}
 
 \subsubsection{Addressing data component of performance}
-\begin{align*}
-  H3_a: &\text{Small amounts of data will lead to overfitting.} \\
-  H4_a: &\text{Imbalanced class prediction can be improved}\\
-  &\text{using data augmentation.} \\
-  H5_a: &\text{Addition of a category to the trained model will} \\
-  &\text{reduce the performance of the model.} \\
-  H6_a: &\text{Adding more training data will improve the} \\
-  &\text{performance of the model.} \\
-\end{align*}
+
+\begin{itemize}
+\item[$H3_a$] Small amounts of data will lead to overfitting.
+\item[$H4_a$] Imbalanced class prediction can be improved using data
+  augmentation.
+\item[$H5_a$] Addition of a category to the trained model will reduce the
+  performance of the model.
+\item[$H6_a$] Adding more training data will improve the performance of the
+  model.
+\end{itemize}
 
 TODO: more context would be helpful here, maybe some citations
 
@@ -212,15 +212,66 @@ the activation function owing to ReLU’s faster convergence.
   \label{fig:cnnArch}
 \end{figure}
 
-Loss Function: Categorical Cross Entropy [TO DO: Why?]
-Optimizer: [TODO: Why?]
+\subsubsection{Understanding the Loss Function}
+
+Most modern neural networks are trained using maximum likelihood. This
+means that the cost function is the negative log-likelihood, also
+described as the cross-entropy between the training data and the model
+distribution \cite{Goodfellow-et-al-2016}. In our use case, we are interested
+in correctly classifying 10 categories of drawings. Our output unit
+use a Softmax function in our output layer because they are most often
+used for classifiers representing the probability distribution over
+$n$ different classes. Given features $h$, weights $W$, and bias $b$, a
+linear layer first predicts unnormalized log probabilities:
+\begin{equation}
+  z = W^Th + b 
+\end{equation}
+
+where $z_i = \log \tilde{P}(y = i | x)$. The softmax function can then
+exponentiate and normalize $z$ to obtain the desired $\hat{y}$. The
+softmax function is given by
+\begin{equation}
+  \func{softmax}(z)_i = \frac{\exp(z_i)}{\sum_j \exp(z_j)}.
+\end{equation}
+
+As a cost function, we wish to maximize
+$\log P(y=i; z) = \log \func{softmax}(z)_i$. We can do this formally as
+\begin{equation}
+  \log \func{softmax}(z)_i = z_i - \log \sum_j \exp(z_j).
+\end{equation}
+
+which gives us the intuition for a single example. Overall, we want to learn
+parameters that drive the softmax to predict the fraction of counts of each
+outcome observed in the training set \cite{Goodfellow-et-al-2016}:
+\begin{equation}
+  \func{softmax}(z(x;\theta))_i \approx \frac{\sum_{j=1}^m 1_{y^{(j)} = i,
+      x^{(j)} = x}}{\sum_{j=1}^m 1_{x^{(j)} = x}}.
+\end{equation}
+
+This is how the $\func{categorical\_crossetropy}(\text{y\_true}, \text{y\_pred})$ function is constructed in Keras \cite{chollet2015keras} as well as the
+$\func{softmax\_cross\_entropy\_with\_logits\_v2}(\text{labels}, \text{logits})$
+in Tensorflow \cite{tensorflow2015-whitepaper}. 
+
+\subsubsection{Understanding the Optimization Technique}
+
+There are a number of different optimization methods such as Stochastic
+and Batch Gradient descent. In practice, we chose to use a faster variant
+of gradient descent called Adam. The Adam optimization is able to use
+an exponentially weighted average of the gradients, a technique called
+momentum, and then use that gradient to update your weights instead. We
+also want to slow down gradient descent in the horizontal direction, a
+technique called RMSprop), to reduce oscillations from batch gradient descent.
+The Adam optimization method is combining momentum and RMSprop to perform
+gradient descent more quickly \cite{DeepLear51:online}.
+
+
 Number of Trainable Parameters: 320,890
 
 
 The number of clearly being much greater than the number of observations used
 to train the model, we need to reduce the number of parameters vis-a-vis
 number of observations. From the available strategies to do so, we
-incorporated MaxPooling [TO DO: why?] post each convolution operation, in
+incorporated MaxPooling [TODO: why?] post each convolution operation, in
 order to extract only the most significant features. As as a consequence,
 this reduced the volume of the output, giving the model a smaller memory
 footprint as well as a smaller number of trainable parameters.
