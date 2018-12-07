@@ -139,8 +139,7 @@ outcome observed in the training set \cite{Goodfellow-et-al-2016}:
 \end{equation}
 
 This is how the $\func{categorical\_crossetropy}(\text{y\_true}, \text{y\_pred})$ function is constructed in Keras \cite{chollet2015keras} as well as the
-$\func{softmax\_cross\_entropy\_with\_logits\_v2}(\text{labels}, \text{logits})$
-in Tensorflow \cite{tensorflow2015-whitepaper}. 
+$\func{softmax\_cross\_entropy\_with\_logits\_v2}(\text{labels}, \text{logits})$ in Tensorflow \cite{tensorflow2015-whitepaper}. 
 
 \subsubsection{Understanding the Optimization Technique}
 
@@ -161,7 +160,59 @@ combining momentum and RMSprop to perform gradient descent more quickly
 
 \subsubsection{Convolutional Neural Network (CNN)}
 
-TODO: explain how we used a CNN or anything else not covered in class
+Convolutional networks, also known as convolutional neural networks(CNNs),
+are a specialized kind of neural network for processing data that has a
+known grid-like topology. Convolutional networks have been tremendously
+successful in practical applications. The name “convolutional neural network”
+indicates that the network employs a mathematical operation called
+convolution. Convolution is a specialized kind of linear operation.
+Convolutional networks are simply neural networks that use convolution
+in place of general matrix multiplication in at least one of their layers. See
+Figure \ref{fig:CNN} in the Appendix for a visual representation of a CNN.
+
+CNN architectures are usually composed of the building blocks as described
+below:
+
+\begin{enumerate}
+\item \textbf{Convolution:} Convolution operation helps to extract features
+  from the input image. The ﬁrst argument to the convolution is often referred
+  to as the input , the second argument as the feature detector (kernel) and
+  the output as the feature map. The convolution operation takes the dot
+  product of feature map and the input to detect features. Since each
+  convolution operation only focuses on a part of an image enabling parameter
+  sharing which helps to reduce the number of free parameters compared to a
+  fully connected neural network, allowing the network to be deeper with
+  fewer parameters.
+
+  \begin{itemize}
+  \item \textbf{Strides:} Stride is the number of pixels jumps between
+    each convolution operation performed on the input matrix. When the stride
+    is 1 then we move the filters to 1 pixel at a time. Increasing the stride
+    parameter reduces the output volume of the convolution since the jumps
+    are larger.
+  \item \textbf{Padding:}Padding helps to detect features present at the
+    border by adding a dummy values around the edge. Since convolution
+    operations collect most information from the center of the image, adding
+    padding allows the border pixels to be weighed more during the convolution
+    operation.
+  \end{itemize}
+
+  See Figure \ref{fig:CNNStridePad} in the Appendix for an example of Stride
+  and Padding.
+
+\item \textbf{Pooling Layer:} Pooling layers section helps to reduce the
+  number of parameters when the images are too large. Spatial pooling
+  (subsampling or downsampling) reduces the dimensionality of each map,
+  retaining important information. These can be of different types:
+  (1) Max Pooling - takes the largest element (most important feature)
+  from the rectified feature map (2) Average Pooling - averages all the
+  pixel values (3) Sum Pooling. sum of all pixels values. See figure
+  \ref{fig:CNNPooling} for a visualization of a Pooling Layer.
+
+\item \textbf{Fully Connected Layer:} The layer we call as FC layer, we
+  flattened our matrix into vector and feed it into a fully connected layer
+  like neural network.
+  \end{enumerate}
 
 \subsection{Hypotheses}
 
@@ -317,9 +368,33 @@ ok
 
 Talk about our final slide and tie the hypotheses together
 
-
-
 \bibliographystyle{unsrt}
 \bibliography{references}
+
+\section{Appendix}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig5}
+    \end{center}
+  \caption{CNN Architecture Example}
+  \label{fig:CNN}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig6}
+    \end{center}
+  \caption{Convolution operation with stride=1, padding=None}
+  \label{fig:CNNStridePad}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig7}
+  \end{center}
+  \caption{Example of Max Pooling}
+  \label{fig:CNNPooling}
+  \end{figure}
 
 \end{document}
