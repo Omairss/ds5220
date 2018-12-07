@@ -351,9 +351,12 @@ the data with an OLS regression.
 
 \section{Results}
 
-We report our results by examining the validity of each hypothesis.
+We report our results by examining the validity of each hypothesis
+related to the model and data components of performance.
 
 \subsection{Addressing model component of performance}
+
+These results pertain to hypotheses effected by modeling choices.
 
 \subsubsection{$H1_a$\: Fully Connected Neural Network will struggle to
   get reasonable accuracy}
@@ -374,14 +377,23 @@ up with respect to model complexity or data.
 
 \subsection{Addressing data component of performance}
 
+These results pertain to hypotheses effected by the underlying
+distribution of data.
+
 \subsubsection{$H3_a$\: Small amounts of data will lead to overfitting}
 
 As found in the experiments, after decreasing the amount of data resulted
-in overfitting thereby confirming our hypothesis. 
+in overfitting thereby confirming our hypothesis. Figure \ref{fig:h3Results}
+contains a table with results for various number $n$ of observations.
+We increased the number of categories the Neural Network had to model,
+holding the number of examples per categories constant. Observations were
+increased in steps of 1,000 from $n=7000$ to $n=20,000$ examples. The
+number of categories $k$ ranged from $k=3$ to $k=10$ in steps of 1.
 
 \subsubsection{$H4_a$\: Imbalanced class prediction can be improved using
   data augmentation}
 
+Results can be seen in the Appendix with Figure \ref{fig:h4Results}. 
 We get unexpectedly high accuracy of 43\% even in the worst case of 1:500
 imbalance in the categories while attempting to classify only the minority
 categories. This is because neural networks tend to generalize well on the
@@ -391,7 +403,10 @@ most important weights.
   will reduce the performance of the model/Adding more training data will
   improve the performance of the model}
 
-It can be interpreted from the regression that for every additional category,
+Results for various number of classes $k$ are visualized in the Appendix
+under Figure \ref{fig:h5Results}. Results for various amounts of training
+data are under Figure \ref{fig:h6Results} in the Appendix. It can be
+interpreted from the regression that for every additional category,
 we can expect the test accuracy go down by 1.88\% and test loss to go up by
 6.4\% while for every additional datapoint, we can expect the accuracy to go
 up by .0016\% and loss to go down by .0056\%. Both results are statistically
