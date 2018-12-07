@@ -7,6 +7,47 @@ output:
 bibliography: references.bib
 ---
 
+# Introduction
+
+Many recent industry innovations have included neural networks. An important 
+research area within neural networks has been image classification. One of 
+the best techniques to classify images is Convolutional Neural Networks (CNN).
+We have sought to better understand industry best practices by exploring 
+different image classification techniques with neural networks. Our 
+exploration starts by manually performing image classification and noting the 
+level of human accuracy. We then use a fully connected neural network to 
+perform image classification before implementing a CNN. We implemented options
+for tuning and debugging the neural network while implementing each method 
+during our process. We were able to develop an intuition for image 
+classification best practices using neural networks after our research.
+
+Many supervised machine learning methods often differ from those employed 
+when constructing neural networks. These supervised machine learning methods, 
+such as logistic regression or decision tree classification, require feature 
+engineering to successfully classify an image. Models requiring feature 
+engineering rely on considerable effort by subject matter experts to achieve 
+reasonable accuracy. Neural networks allow for an approach which does not 
+require feature engineering to achieve similar or better accuracy. Industry 
+engineering efforts regarding feature engineering can be shifted to neural 
+networks  in some cases such as image classification. Moreover, the 
+availability of cheap computing resources sped up a shift towards the use of 
+neural networks.
+
+When considering modeling approaches, we consider both fully connected and 
+convolutional neural networks. A fully connected neural network is known to 
+be inefficient at classifying large images. These inefficiencies in a fully 
+connected neural network partly arise because every neuron in the $n-1$ layer 
+must be connected to the $n$th layer.
+
+
+
+
+
+
+
+
+
+
 We're trying to put together a CNN based on the "Quick, Draw!" Kaggle
 competition [@QuickDra10].
 

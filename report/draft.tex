@@ -1,0 +1,117 @@
+%
+% PPUA 5262 Final
+%
+\documentclass[12pt]{article}
+
+%
+% Packages
+%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{clrscode3e}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+%
+% Package settings
+%
+
+%% begin.rcode setup, include=FALSE
+% library(knitr)
+%
+% opts_chunk$set(fig.path='figure/latex-', cache.path='cache/latex-')
+%% end.rcode
+
+%
+% Document Settings
+%
+\setlength{\parskip}{1pc}
+\setlength{\parindent}{0pt}
+\setlength{\topmargin}{-3pc}
+\setlength{\textheight}{9.5in}
+\setlength{\oddsidemargin}{0pc}
+\setlength{\evensidemargin}{0pc}
+\setlength{\textwidth}{6.5in}
+
+
+\title{Quick, Draw! Image Classification}
+\author{Group 3}
+
+%
+% Image directory location
+%
+\graphicspath{ {./imgs/} }
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Many recent industry innovations have included neural networks. An
+important research area within neural networks has been image classification.
+One of the best techniques to classify images is Convolutional Neural
+Networks (CNN). We have sought to better understand industry best practices
+by exploring different image classification techniques with neural networks.
+Our exploration starts by manually performing image classification and
+noting the level of human accuracy. We then use a fully connected neural
+network to perform image classification before implementing a CNN. We
+implemented options for tuning and debugging the neural network while
+implementing each method during our process. We were able to develop an
+intuition for image classification best practices using neural networks
+after our research.
+
+Many supervised machine learning methods often differ from those employed 
+when constructing neural networks. These supervised machine learning
+methods, such as logistic regression or decision tree classification,
+require feature engineering to successfully classify an image. Models
+requiring feature engineering rely on considerable effort by subject matter
+experts to achieve reasonable accuracy. Neural networks allow for an
+approach which does not require feature engineering to achieve similar or
+better accuracy. Industry engineering efforts regarding feature engineering
+can be shifted to neural networks  in some cases such as image
+classification. Moreover, the availability of cheap computing resources
+sped up a shift towards the use of neural networks.
+
+When considering modeling approaches, we examine both fully connected and 
+convolutional neural networks. A fully connected neural network is known to 
+be inefficient at classifying large images. These inefficiencies in a fully 
+connected neural network partly arise because every neuron in the $\ell-1$
+layer must be connected to the $\ell$th layer. This requires a series
+of matrix multiplications and additions across each layer $\ell$.
+Alternatively, a CNN allows for more efficient computations by: (1) efficient
+and automatic feature generation using local connectivity and parameter
+sharing of convolution operations, (2) dimensionality reduction using pooling
+layers. In this project, we attempt to understand these topics in depth
+from an empirical stanpoint in relation to image classification using
+Google's ``Quick, Draw!'' dataset.
+
+
+\section{Methods}
+
+\subsection{EDA}
+
+
+\section{Results}
+
+
+\subsection{Image Classification using Humans}
+
+\subsection{Fully Connected Neural Network}
+
+\subsection{Convolutional Neural Network}
+
+\section{Discussion}
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

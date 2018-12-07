@@ -1,0 +1,325 @@
+%
+% PPUA 5262 Final
+%
+\documentclass[12pt]{article}
+
+%
+% Packages
+%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{clrscode3e}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+%
+% Package settings
+%
+
+%% begin.rcode setup, include=FALSE
+% library(knitr)
+%
+% opts_chunk$set(fig.path='figure/latex-', cache.path='cache/latex-')
+%% end.rcode
+
+%
+% Document Settings
+%
+\setlength{\parskip}{1pc}
+\setlength{\parindent}{0pt}
+\setlength{\topmargin}{-3pc}
+\setlength{\textheight}{9.5in}
+\setlength{\oddsidemargin}{0pc}
+\setlength{\evensidemargin}{0pc}
+\setlength{\textwidth}{6.5in}
+
+
+\title{Predicting Spatial Patterns of Property Adaptations}
+\author{Tyler Brown}
+
+%
+% Image directory location
+%
+\graphicspath{ {./imgs/} }
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  Adaptations to property impact government and business community. Government wants to
+  incentivize property adaptations which enhance the value of their community. Business wants
+  to provide the products and services required for those property adaptations. Predicting
+  the spatial patterns of property adaptation within the City of Cambridge helps enhance
+  goals of government and business. We want to better anticipate the needs of residents by
+  predicting where property adaptation is likely to happen. This paper uses statistical
+  techniques which rely on Bayesian classification. A special case of bivariate kernel
+  estimation used to measure spatial relationships, called 'Bayesian Windows', is used in
+  the Bayesian classifier and a unique contribution of this paper. Understanding spatial
+  patterns of property adaptations can help government and businesses better respond to
+  long-term incentives while meeting short-term needs.
+\end{abstract}
+
+\section{Introduction}
+
+When predicting patterns of property adaptations, we are trying to estimate \textit{where}
+adaptations to property will occur in the next time period. Understanding where properties are
+being adapted can help city planners incentivize adaptations in other parts of the city. Business
+owners can anticipate customer needs by marketing property adaptations to the neighborhoods where
+they are most likely to occur in the future. Predicting patterns of property adaptations is
+different than predicting optimal property adaptations or the rate of property adaptations. This
+approach focuses on the likelihood of a location having a property adaptation rather than the best
+location for a property adaptation or the speed of property adaptation given a certain number of
+properties. The property adaptation predictions can be used to produce a yearly index for decision
+makers and businesses.
+
+The City of Cambridge has an Open Data Portal and we're doing that.
+
+\section{Data}
+
+Data comes from the City of Cambridge Open Data Portal. Using Building permits and
+the Master Address List. We're splitting test/training/ and development sets out by year.
+Years available are 2014-2018.
+
+We want to test the statistical technique for parking spot creation and solar panel installation.
+
+\section{Methods}
+
+Using Bayesian classification to predict whether a coordinate block will have a property
+adaptation. Coordinate neighborhoods are aggregated on the basis of membership in an set
+number of coordinate groups. Spatial relationships in the data are captured using a novel
+bivariate kernel estimation technique called 'Bayesian Windows' which is a form of Kernel
+Smoothing Methods.
+
+Kernel Smoothing Methods use only those observations close to the target
+point $x_0$ to fit a simple model and achieve localization. A weighting
+function or \textit{kernel} $K_{\lambda} (x_0, x_i)$, which assigns a
+weight to $x_i$ based on its distance from $x_0$. The kernels $K_{\lambda}$
+are typically indexed by a parameter $\lambda$ that dictates the width of
+the neighborhood \cite{hastie2009elements}.
+
+\subsection{Kernel Density Estimation}
+
+Kernel density estimation is an unsupervised learning procedure which leads
+is related to a simple family of procedures for nonparametric, not involving
+any assumptions as to the form or parameters of a frequency distribution,
+classification. I will first provide an example from Hastie et. al. to
+explain the statistical technique, then extend his approach by introducing
+a special case of this technique \cite{hastie2009elements}.
+
+Suppose we have a random sample $x_1, ..., x_N$ drawn from a probability
+density $f_X (x)$, and we wish to estimate $f_X$ at a point $x_0$. For
+simplicity, we assume for now that $X \in \mathbb{R}$ ($X$ is a member of
+a set of all real numbers). A natural local estimate has the form
+\[
+\hat{f}_X (x_0) = \frac{\# x_i \in \mathcal{N}(x_0)}{\mathcal{N} \lambda}
+\tag{\text{Hastie 6.21}}
+\]
+
+where $\mathcal{N}(x_0)$ is a normally distributed (Gaussian) small metric
+neighborhood around $x_0$ of width $\lambda$. When we have an expectation
+that a good representation of the data will have weights decreasing with
+distance from $x_0$ then the Gaussian kernel,
+$K_{\lambda} (x_0, x) = \phi(|x - x_0| / \lambda)$, is a popular choice for $K_{\lambda}$. The parameter $\lambda$ is often the standard deviation when we
+use a Gaussian kernel. Letting $\phi_{\lambda}$ denote the Gaussian density
+with mean zero and standard-deviation $\lambda$, then (Hastie 6.22) has the
+form
+\[
+\hat{f}_X (x) = \frac{1}{N} \sum_{i=1}^N \phi_{\lambda} (x - x_i)
+\tag{\text{Hastie 6.23}}
+\]
+where $\hat{f}_X (x)$ is equivalent to the predicted values $\hat{y}$ we are
+used to seeing with OLS regression. The number of observations $N$ is weighting
+each Kernel Density Estimate.
+
+The Gaussian kernel example provided by Hastie et. al.
+\cite{hastie2009elements} helps us get an intuition for using Kernel Density
+Estimation. Equation (Hastie 6.21) has a denominator where the width of the
+Normal distribution is dictated by the standard deviation $\lambda$. The
+numerator is a measure of where $x_i$ is in relation to $x_0$ given a Normal
+distribution. This approach is typically used when we anticipate non-linear
+patterns in our data.
+
+\subsection{Kernel Density Classification}
+
+Hastie et. al \cite{hastie2009elements} shows how we can use nonparametric
+density estimates for classification using Bayes' theorem. Suppose for a
+$J$ class problem we fit nonparametric density estimates, like the Gaussian
+kernel, $\hat{f}_j (X), j=1, ..., J$ separately in each of the classes, and
+we have estimates of the class priors $\hat{\pi}_j$ (usually the sample
+proportions). Then
+\[
+\hat{\text{Pr}} (G = j \vert X = x_0) = \frac{\hat{\pi}_j \hat{f}_j (x_0)}{
+  \sum_{k=1}^J \hat{\pi}_k \hat{f}_k (x_0)}.
+\tag{\text{Hastie 6.25}}
+\]
+
+We can extend this application of Bayes' theorem to use a Naive Bayes
+Classifier. The naive Bayes model assumes that given a class $G = j$, the
+features $X_k$ are independent.
+
+\[
+f_j (X) = \prod_{k=1}^p f_{jk} (X_k).
+\tag{\text{Hastie 6.26}}
+\]
+
+This paper uses a Naive Bayes Classifier to predict whether property
+adaptation will occur when $J=2$, where $k=1$ for yes property adaptation
+will occur or $k=0$ for no we do not expect property adaptation. 
+for a given dataset. A Naive Bayes classifier will compute the prior
+probabilities using a training set, then compute posterior probabilities on
+a test set. We then use a decision boundary to predict class $k=1$ if a
+property adaptation will occur.
+
+\begin{equation}
+  f_{jk}(X) = \begin{cases}
+    1, & \text{ if } p(k=1) > p(k=0) \\
+    0, & \text{ otherwise }
+    \end{cases}
+\end{equation}
+
+TODO: clean up the $j,k$ ambiguity in the notation
+
+Given that property adaptation is expected to have a strong spatial component,
+we do not want to use a Gaussian kernel for estimation. Instead, this paper
+introduces a special case of kernel for spatial relationships. 
+
+\subsection{Special Case of Kernel for Spatial Relationships}
+
+This paper uses a special case of Kernel Density Estimation to capture the
+spatial relationships in our data. We use a bivariate kernel which accepts
+latitude and longitude as arguments. I am calling this a 'Bayesian Windows'
+or \textit{winbaye} kernel.
+
+\subsubsection{Computing Weights $\lambda$}
+
+Recall the Gaussian kernel, weight $\lambda$  is specified in (Hastie 6.21)
+by standard deviation size for a Normal distribution with a mean of $\mu = 0$.
+Adjusting $\lambda$ in the Gaussian kernel dictated the neighborhood width
+used to compute localized estimates. When computing a \textit{winbaye} kernel,
+we want to know the size of spatial neighborhood in which coordinate pairs
+will belong. We compute window $\mathcal{W}$ size $\lambda$ for all values
+$i,j$ in each coordinate pairs $M,N$. We first normalize each $i,j$ in the
+coordinate pairs
+
+\begin{equation} \label{sl_equ}
+  s(x, \lambda) = \frac{\max (x) - \min (x)}{\lambda}
+\end{equation}
+
+Equation \ref{sl_equ} specifies the step size for $x$ used when aggregating
+coordinate pairs in addition to the number of steps with $\lambda$. We
+compute a bin for each coordinate in the coordinate pair
+
+\begin{equation}
+  f(X, \lambda)_{bins} = \sum_{i=0}^N x_i \qquad \forall X_i \in  s(X, \lambda)
+  \end{equation}
+
+We can then compute $\mathcal{W} \lambda$ for each $m,n$ coordinate pair
+in latitude $M$ and longitude $N$.
+
+\begin{equation} \label{wl_equ}
+  \mathcal{W} \lambda = \text{distribution of } x_i \in X  \text{ $\forall$ }
+  m, n \in M_{bin}, N_{bin} = f(M, \lambda), f(N, \lambda)
+\end{equation}
+
+Equation \ref{wl_equ} computes the distribution of weights
+$\mathcal{W}\lambda$.
+
+\subsubsection{Computing a Prior Probability Estimate}
+
+Extending (Hastie 6.21), and using the weights $\mathcal{W} \lambda$ we
+previously computed, an estimate for $x_0$ can now be computed. In our
+special case, $x_0$ represents a coordinate pair. Our $f_X(x_0, k)$ coordinate
+pair estimate is an extension of the general form used in (Hastie 6.21)
+
+\begin{equation} \label{fhat_equ}
+  \hat{f}_X(x_0, k) = \begin{cases}
+    1, & \text{ if } x_i \in \mathcal{W}\lambda(x_0) \vert k\\
+    0, & \text{ otherwise. }
+    \end{cases}
+\end{equation}
+
+\begin{figure}[ht]
+  \centering
+  \caption{Examples of \textit{Winbaye} Kernel When Window Size $k=1$}
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{f1}
+    \caption{$x_i \in \mathcal{W}\lambda(x_0) = 1$}
+  \end{subfigure}
+
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{f2}
+    \caption{$x_i \in \mathcal{W}\lambda(x_0) = 1$}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{f3}
+    \caption{$x_i \not\in \mathcal{W}\lambda(x_0) = 0$}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{f4}
+    \caption{$x_i \not\in \mathcal{W}\lambda(x_0) = 0$}
+  \end{subfigure}
+  \label{fig:gull}
+  \end{figure}
+
+We can visualize Equation \ref{fhat_equ} using Figure \ref{fig:gull} for
+window size $k=1$.
+
+Four examples are provided in Figure \ref{fig:gull} to help understand
+$\hat{f}(x_0)$ in Equation \ref{fhat_equ}. The
+center cell in each Sub-figure represents $x_0$. Cells surrounding the center
+represent possible positions for $x_i$. We assume that $x_i = 1$ for some value
+in each matrix for the purposes of visualizing Equation \ref{fhat_equ}.
+
+Stepping through clockwise, Figure \ref{fig:gull}(a) returns a value of 1
+even though multiple values of $x_i=1$. We want to know if any neighbors of a
+distance $k$ exist instead of the number of neighbors. Figure
+\ref{fig:gull}(b) returns a value of 1 with a single value of $x_i$ present.
+\ref{fig:gull}(c) returns a value of 0 even though $x_0 = 1$ because no
+neighbors within distance $k$ are present. \ref{fig:gull}(d) is the
+opposite, where several neighbors within distance $k$ are present but
+$x_0 \neq 1$. Figure \ref{fig:gull} provides several possible examples for
+values returned by Equation \ref{fhat_equ}.
+
+This paper extends (Hastie 6.23) to compute $\hat{f}_X (x)$ given a
+vector of coordinate pairs as $x$. This estimate will give us our
+\textit{prior} probability of a spatial relationship.
+
+\begin{equation} \label{fx_equ}
+  \hat{f}_X (x, k) = \sum_{i=1}^N \mathcal{W}_{\lambda}(x_0, x_i) \vert k
+\end{equation}
+
+Equation \ref{fx_equ} computes the prior probability given a window size of
+$k$ and $\mathcal{W}$ kernel size of $\lambda$. Once the prior probabilities
+are computed, a Naive Bayes Classifier is used to determine our predictions.
+
+\subsection{Predicting Property Adaptations Over Time}
+
+The data is available from 2014-2018. Conventions in machine learning
+have us estimate a training, test, and validation set. I break these datasets
+out by year.
+
+Use a Naive Bayes Classifier with a \textit{Winbaye} kernel for
+solar panel and parking spot property adaptations.  We're able to compare
+performance of the kernel over time and using different property
+adaptations.
+
+TODO: fill this section out after working through the numbers more
+
+There are two hyperparameters $k$ and $\lambda$ so a grid search makes
+sense using cross-validation on the training set.
+
+
+\section{Results}
+
+\section{Discussion}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
