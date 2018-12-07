@@ -1,53 +1,69 @@
 \relax 
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Methods}{1}}
 \citation{Goodfellow-et-al-2016}
 \citation{Goodfellow-et-al-2016}
 \citation{chollet2015keras}
 \citation{tensorflow2015-whitepaper}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Methods}{2}}
+\citation{DeepLear51:online}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Overview of Statistical Modeling Techniques}{2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Understanding the Loss Function}{2}}
-\citation{DeepLear51:online}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Understanding the Optimization Technique}{3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Convolutional Neural Network (CNN)}{3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Understanding the Optimization Technique}{2}}
 \citation{Goodfellow-et-al-2016}
 \citation{DeepLear51:online}
 \citation{DeepLear51:online}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Convolutional Neural Network (CNN)}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Hypotheses}{3}}
 \citation{QuickDra91:online}
 \citation{googlecr61:online}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Hypotheses}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Addressing model component of performance}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Addressing data component of performance}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Data}{4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Sample images from Quick, Draw! dataset\relax }}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Sample images from Quick, Draw! dataset\relax }}{4}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:quickImages}{{1}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Modeling Strategy}{5}}
+\newlabel{fig:quickImages}{{1}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Modeling Strategy}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Baseline image classification using humans}{5}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}$H1_a$: Fully connected neural network will struggle to get reasonable accuracy}{5}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.3}$H2_a$ CNN should perform better than fully connected neural network}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.3}$H2_a$: CNN should perform better than fully connected neural network}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.4}$H3_a$: Small amounts of data will lead to overfitting}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.5}$H4_a$: Imbalanced class prediction can be improved using data augmentation}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.6}$H5_a$ \& $H6_a$: Addition of a category to the trained model will reduce the performance of the model \& Adding more training data will improve the performance of the model}{6}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Addressing model component of performance}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}$H1_a$\tmspace  +\medmuskip {.2222em} Fully Connected Neural Network will struggle to get reasonable accuracy}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}$H2_a$\tmspace  +\medmuskip {.2222em} CNN should perform better than fully connected neural network}{6}}
 \bibstyle{unsrt}
 \bibdata{references}
 \bibcite{Goodfellow-et-al-2016}{1}
 \bibcite{chollet2015keras}{2}
 \bibcite{tensorflow2015-whitepaper}{3}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Addressing data component of performance}{7}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{7}}
 \bibcite{DeepLear51:online}{4}
 \bibcite{QuickDra91:online}{5}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Addressing data component of performance}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}$H3_a$\tmspace  +\medmuskip {.2222em} Small amounts of data will lead to overfitting}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}$H4_a$\tmspace  +\medmuskip {.2222em} Imbalanced class prediction can be improved using data augmentation}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}$H5_a$ \& $H6_a$\tmspace  +\medmuskip {.2222em} Addition of a category to the trained model will reduce the performance of the model/Adding more training data will improve the performance of the model}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{7}}
 \bibcite{googlecr61:online}{6}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Appendix}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Fully Connected Neural Network Architecture\relax }}{8}}
-\newlabel{fig:fcnn}{{2}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces (CNN Model 1) Loss Function: Categorical Cross Entropy, Optimizer: Adam, Trainable Parameters: 320,890\relax }}{8}}
-\newlabel{fig:cnnArch}{{3}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces (CNN Model 2) Loss Function: Categorical Cross Entropy, Optimizer: Adam, Trainable Parameters: 19,322\relax }}{9}}
-\newlabel{fig:cnnArchPool}{{4}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces CNN Architecture Example\relax }}{9}}
-\newlabel{fig:CNN}{{5}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Convolution operation with stride=1, padding=None\relax }}{9}}
-\newlabel{fig:CNNStridePad}{{6}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Example of Max Pooling\relax }}{9}}
-\newlabel{fig:CNNPooling}{{7}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces CNN Architecture Example\relax }}{8}}
+\newlabel{fig:CNN}{{2}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Convolution operation with stride=1, padding=None\relax }}{8}}
+\newlabel{fig:CNNStridePad}{{3}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Example of Max Pooling\relax }}{8}}
+\newlabel{fig:CNNPooling}{{4}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Fully Connected Neural Network Architecture\relax }}{9}}
+\newlabel{fig:fcnn}{{5}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces (CNN Model 1) Loss Function: Categorical Cross Entropy, Optimizer: Adam, Trainable Parameters: 320,890\relax }}{9}}
+\newlabel{fig:cnnArch}{{6}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces (CNN Model 2) Loss Function: Categorical Cross Entropy, Optimizer: Adam, Trainable Parameters: 19,322\relax }}{9}}
+\newlabel{fig:cnnArchPool}{{7}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces $H3_a$ Results for various size training data\relax }}{9}}
+\newlabel{fig:h3Results}{{8}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces $H4_a$ Results for various class imbalances\relax }}{10}}
+\newlabel{fig:h4Results}{{9}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces $H5_a$ Results for various number of classes $k$\relax }}{10}}
+\newlabel{fig:h5Results}{{10}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces $H6_a$ Results for various amounts of training data $n$\relax }}{10}}
+\newlabel{fig:h6Results}{{11}{10}}

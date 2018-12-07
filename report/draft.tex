@@ -1,7 +1,7 @@
 %
 % DS 5220 Final
 %
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 
 %
 % Packages
@@ -296,7 +296,7 @@ model as specified in Figure \ref{fig:fcnn} in the Appendix. The model was
 run on a machine with 13 GB of RAM, Intel Xeon CPU 2.3 GHz (1 core, 2
 threads), 1xTesla K80 GPU having 2496 CUDA cores with 12 GB GDDR5 VRAM.
 
-\subsubsection{$H2_a$ CNN should perform better than fully connected neural
+\subsubsection{$H2_a$: CNN should perform better than fully connected neural
   network}
 
 As for the CNN, we started off with the same approach with attempting
@@ -316,79 +316,86 @@ trainable parameters. Figure \ref{fig:cnnArchPool} has a representation of this
 second CNN model. We employ strategies to reduce overfitting related to
 dropouts and stride in addition to adding more training data.
 
+\subsubsection{$H3_a$: Small amounts of data will lead to overfitting}
+
+Once we have found an optimal model for the dataset, we use this model
+to study the effect of reduction in the sampled data. The optimal model
+helps inform the relative performance of models trained with lower amounts
+of data.
+
+\subsubsection{$H4_a$: Imbalanced class prediction can be improved using data
+  augmentation}
+
+We tried to show the importance of having equal partitions of data to train
+a machine learning model. Imbalanced classes can make a model biased toward
+the majority class. We trained the neural network twice, on an imbalanced
+dataset, keeping the number of samples for the majority class (fork), fixed
+and decreasing the number of samples for the minority class (hammer).
+
+The dataset was split into 80\% and 20\% for train and test respectively.
+This split had 0.2\%, 2\%, 10\%, 20\%, 50\%, and 100\% of majority class
+observations for the minority class. We designed the test dataset with 20000
+fresh samples from the main dataset to get a clearer picture of the model
+performance and we found that the accuracy on this fresh test dataset kept
+on increasing as the number of samples in the minority class increased.
+
+\subsubsection{$H5_a$ \& $H6_a$: Addition of a category to the trained model will reduce the performance of the model \& Adding more training data will improve the performance of the model}
+
+We try and understand the limits and capacity of the finalized model by
+varying the number of categories and the number of rows per category. We
+then measure the response accuracy and response loss of the model. The
+number of rows per category is altered in steps of 1000 from 7000 to
+20000 and the number of categories is altered in steps of 1 from 3 to 10
+categories. We attempt to formalize the patterns we see from visualizing
+the data with an OLS regression.
+
 \section{Results}
 
 We report our results by examining the validity of each hypothesis.
 
 \subsection{Addressing model component of performance}
 
-In order to perform this experiment we built a fully connected neural network
-using tensorflow. Our train:test split was chosen to be 80:20, an industry
-standard. 
+\subsubsection{$H1_a$\: Fully Connected Neural Network will struggle to
+  get reasonable accuracy}
 
-Our initial objective was to build a model that overfit our given dataset,
-with the idea that once our model is complex enough to overfit the training
-data, we could regularize it in order to achieve a more optimal fit.
+While our initial hypothesis assumed that a regular fully connected
+network would struggle to achieve a reasonable accuracy, our experiment
+proved our hypothesis as invalid by achieving a commendable accuracy.
+Having said that, the model did take a longer to converge than expected. 
 
-After experimenting with various architectures, we narrowed down to a 3 layer
-model as specified in Figure \ref{fig:fcnn}.
+\subsubsection{$H2_a$\: CNN should perform better than fully connected neural
+  network}
 
-
-The training set accuracy observed was 93\%, while the test accuracy was at
-73\%, which clearly indicated an overfit in the model, as designed.
-
-The model took 1500 epochs to converge taking around ~45 minutes on a
-machine with 13 GB of RAM, Intel Xeon CPU 2.3 GHz (1 core, 2 threads),
-1xTesla K80 GPU having 2496 CUDA cores with 12 GB GDDR5 VRAM. In order to
-manage variance, we attempted regularizing using dropouts. Unfortunately,
-that effort was futile. We then doubled the amount of data sampled to train
-the model, eventually helping us achieve training set accuracy of 86\% and
-test set accuracy of 82\%. Our learning rate was specified as 0.001.
-
-While our initial hypothesis assumed that a regular fully connected network
-would struggle to achieve a reasonable accuracy, our experiment proved our
-hypothesis as invalid by achieving a commendable accuracy. Having said that,
-the model did take a longer to converge than expected.
-
-As for the CNN, we started off with the same approach with attempting to
-overfit the model using convolution operations and a fully connected layer.
-Since our objective is to categorise 10 categories, softmax was chosen as the
-activation function for the final layer, while every other neuron had ReLU as
-the activation function owing to ReLU’s faster convergence.
-
-
-
-
-Number of Trainable Parameters: 320,890
-
-
-The number of clearly being much greater than the number of observations used
-to train the model, we need to reduce the number of parameters vis-a-vis
-number of observations. From the available strategies to do so, we
-incorporated MaxPooling [TODO: why?] post each convolution operation, in
-order to extract only the most significant features. As as a consequence,
-this reduced the volume of the output, giving the model a smaller memory
-footprint as well as a smaller number of trainable parameters.
-
-
-The observable training accuracy is 0.90, whereas the validation accuracy is
-0.89. The model converged after 10 epochs, which took ~ 3 minutes.
-
-Some of the other unsuccessful strategies used to decrease the number of
-parameters and to regularize the network were strides and dropouts which
-sacrificed way too much in the way of accuracy and thus had to be dropped.
-Since most of our drawings had most of their information in the center of the
-image, padding, in theory wouldn’t be of much help. However, actually
-implementing padding improved our accuracy by 1\% at a cost of ~6000
-parameters.
-
-Conclusion
-
-A slight (~5\%) improvement in the accuracy of a CNN when compared to a fully connected network, keeping the number of parameters constant, was observed. However, the CNN happened to be around 13 times faster in practice. This delta in accuracy and speed is likely to be amplified as we scale the model up with respect to model complexity or data.
+A slight (~5\%) improvement in the accuracy of a CNN when compared to a fully
+connected network, keeping the number of parameters constant, was observed.
+However, the CNN happened to be around 13 times faster in practice. This
+delta in accuracy and speed is likely to be amplified as we scale the model
+up with respect to model complexity or data.
 
 \subsection{Addressing data component of performance}
 
-ok
+\subsubsection{$H3_a$\: Small amounts of data will lead to overfitting}
+
+As found in the experiments, after decreasing the amount of data resulted
+in overfitting thereby confirming our hypothesis. 
+
+\subsubsection{$H4_a$\: Imbalanced class prediction can be improved using
+  data augmentation}
+
+We get unexpectedly high accuracy of 43\% even in the worst case of 1:500
+imbalance in the categories while attempting to classify only the minority
+categories. This is because neural networks tend to generalize well on the
+most important weights.
+
+\subsubsection{$H5_a$ \& $H6_a$\: Addition of a category to the trained model
+  will reduce the performance of the model/Adding more training data will
+  improve the performance of the model}
+
+It can be interpreted from the regression that for every additional category,
+we can expect the test accuracy go down by 1.88\% and test loss to go up by
+6.4\% while for every additional datapoint, we can expect the accuracy to go
+up by .0016\% and loss to go down by .0056\%. Both results are statistically
+significant with reasonably tight confidence intervals and standard errors.
 
 \section{Discussion}
 
@@ -399,31 +406,7 @@ Talk about our final slide and tie the hypotheses together
 
 \section{Appendix}
 
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=0.75]{fig2}
-    \end{center}
-  \caption{Fully Connected Neural Network Architecture}
-  \label{fig:fcnn}
-\end{figure}
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=0.5]{fig3}
-    \end{center}
-  \caption{(CNN Model 1) Loss Function: Categorical Cross Entropy, Optimizer:
-    Adam, Trainable Parameters: 320,890}
-  \label{fig:cnnArch}
-\end{figure}
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=0.5]{fig4}
-  \end{center}
-  \caption{(CNN Model 2) Loss Function: Categorical Cross Entropy, Optimizer:
-    Adam, Trainable Parameters: 19,322}
-  \label{fig:cnnArchPool}
-\end{figure}
+% Stats summary figures
 
 \begin{figure}[h!]
   \begin{center}
@@ -448,5 +431,79 @@ Talk about our final slide and tie the hypotheses together
   \caption{Example of Max Pooling}
   \label{fig:CNNPooling}
   \end{figure}
+
+% Fully Connected Neural Network specs
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.75]{fig2}
+    \end{center}
+  \caption{Fully Connected Neural Network Architecture}
+  \label{fig:fcnn}
+\end{figure}
+
+% CNN model specs
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig3}
+    \end{center}
+  \caption{(CNN Model 1) Loss Function: Categorical Cross Entropy, Optimizer:
+    Adam, Trainable Parameters: 320,890}
+  \label{fig:cnnArch}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig4}
+  \end{center}
+  \caption{(CNN Model 2) Loss Function: Categorical Cross Entropy, Optimizer:
+    Adam, Trainable Parameters: 19,322}
+  \label{fig:cnnArchPool}
+\end{figure}
+
+% H3 results
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig8}
+    \end{center}
+  \caption{$H3_a$ Results for various size training data}
+  \label{fig:h3Results}
+  \end{figure}
+
+% H4 results
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig9}
+    \end{center}
+  \caption{$H4_a$ Results for various class imbalances}
+  \label{fig:h4Results}
+\end{figure}
+
+% H5 results
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig10}
+    \end{center}
+  \caption{$H5_a$ Results for various number of classes $k$}
+  \label{fig:h5Results}
+\end{figure}
+
+% H6 results
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig11}
+    \end{center}
+  \caption{$H6_a$ Results for various amounts of training data $n$}
+  \label{fig:h6Results}
+  \end{figure}
+
+
+
+
 
 \end{document}
