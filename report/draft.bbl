@@ -31,4 +31,17 @@ Andrew Ng.
 \newblock \url{https://www.coursera.org/specializations/deep-learning}, 2018.
 \newblock (Accessed on 12/07/2018).
 
+\bibitem{QuickDra91:online}
+Google.
+\newblock Quick, draw! doodle recognition challenge | kaggle.
+\newblock \url{https://www.kaggle.com/c/quickdraw-doodle-recognition}, 2018.
+\newblock (Accessed on 12/07/2018).
+
+\bibitem{googlecr61:online}
+Google.
+\newblock googlecreativelab/quickdraw-dataset: Documentation on how to access
+  and use the quick, draw! dataset.
+\newblock \url{https://github.com/googlecreativelab/quickdraw-dataset}, 2016.
+\newblock (Accessed on 12/07/2018).
+
 \end{thebibliography}

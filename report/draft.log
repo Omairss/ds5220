@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 DEC 2018 15:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 DEC 2018 15:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -292,34 +292,33 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<./imgs/fig1.png, id=15, 579.16376pt x 154.5775pt>
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+<./imgs/fig1.png, id=22, 579.16376pt x 154.5775pt>
 File: ./imgs/fig1.png Graphic file (type png)
 <use ./imgs/fig1.png>
-Package pdftex.def Info: ./imgs/fig1.png  used on input line 151.
+Package pdftex.def Info: ./imgs/fig1.png  used on input line 208.
 (pdftex.def)             Requested size: 289.58116pt x 77.28854pt.
-<./imgs/fig2.png, id=17, 594.22pt x 196.735pt>
+<./imgs/fig2.png, id=24, 594.22pt x 196.735pt>
 File: ./imgs/fig2.png Graphic file (type png)
 <use ./imgs/fig2.png>
-Package pdftex.def Info: ./imgs/fig2.png  used on input line 179.
+Package pdftex.def Info: ./imgs/fig2.png  used on input line 240.
 (pdftex.def)             Requested size: 445.66391pt x 147.55087pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3 <./imgs/fig1.png>]
-<./imgs/fig3.png, id=22, 637.38126pt x 104.39pt>
+[4 <./imgs/fig1.png>]
+<./imgs/fig3.png, id=29, 637.38126pt x 104.39pt>
 File: ./imgs/fig3.png Graphic file (type png)
 <use ./imgs/fig3.png>
-Package pdftex.def Info: ./imgs/fig3.png  used on input line 209.
+Package pdftex.def Info: ./imgs/fig3.png  used on input line 270.
 (pdftex.def)             Requested size: 318.68985pt x 52.19485pt.
- [4 <./imgs/fig2.png> <./imgs/fig3.png>]
-<./imgs/fig4.png, id=28, 634.37pt x 100.375pt>
+<./imgs/fig4.png, id=30, 634.37pt x 100.375pt>
 File: ./imgs/fig4.png Graphic file (type png)
 <use ./imgs/fig4.png>
-Package pdftex.def Info: ./imgs/fig4.png  used on input line 281.
+Package pdftex.def Info: ./imgs/fig4.png  used on input line 291.
 (pdftex.def)             Requested size: 317.18422pt x 50.18736pt.
- [5] (./draft.bbl
+ [5 <./imgs/fig2.png> <./imgs/fig3.png>] (./draft.bbl
 ! Undefined control sequence.
 l.7 \newblock \url
                   {http://www.deeplearningbook.org}.
@@ -338,6 +337,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+[6 <./imgs/fig4.png>]
 ! Undefined control sequence.
 l.31 \newblock \url
                    {https://www.coursera.org/specializations/deep-learning},...
@@ -347,28 +347,58 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[6 <./imgs/fig4.png>]) [7] (./draft.aux) ) 
+! Undefined control sequence.
+l.37 \newblock \url
+                   {https://www.kaggle.com/c/quickdraw-doodle-recognition}, ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--39
+[]\OT1/cmr/m/n/12 Google.  Quick, draw! doo-dle recog-ni-tion chal-lenge | kag-
+gle.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--39
+\OT1/cmr/m/n/12 https://www.kaggle.com/c/quickdraw-doodle-recognition, 2018.  (
+Ac-cessed on
+ []
+
+! Undefined control sequence.
+l.44 \newblock \url
+                   {https://github.com/googlecreativelab/quickdraw-dataset},...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+) [7] (./draft.aux) ) 
 Here is how much of TeX's memory you used:
- 4242 strings out of 492649
- 60532 string characters out of 6129622
- 133389 words of memory out of 5000000
- 8059 multiletter control sequences out of 15000+600000
+ 4244 strings out of 492649
+ 60570 string characters out of 6129622
+ 133395 words of memory out of 5000000
+ 8061 multiletter control sequences out of 15000+600000
  12750 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,7n,39p,378b,285s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmti12.pfb>
-Output written on draft.pdf (7 pages, 318494 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
+pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pf
+b>
+Output written on draft.pdf (7 pages, 319533 bytes).
 PDF statistics:
  81 PDF objects out of 1000 (max. 8388607)
  52 compressed objects within 1 object stream

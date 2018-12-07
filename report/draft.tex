@@ -99,9 +99,65 @@ theoretically informed hypotheses, and providing an overview of our data.
 \subsection{Overview of Statistical Modeling Techniques}
 
 We use human classification, fully connected neural networks,
-and a Convolutional Neural Network (CNN). We discuss the CNN in
-more detail than was covered in class so an overview is provided
-here.
+and a Convolutional Neural Network (CNN). We use more detail to
+describe techniques not covered during the course.
+
+\subsubsection{Understanding the Loss Function}
+
+Most modern neural networks are trained using maximum likelihood. This
+means that the cost function is the negative log-likelihood, also
+described as the cross-entropy between the training data and the model
+distribution \cite{Goodfellow-et-al-2016}. In our use case, we are interested
+in correctly classifying 10 categories of drawings. Our output unit
+use a Softmax function in our output layer because they are most often
+used for classifiers representing the probability distribution over
+$n$ different classes. Given features $h$, weights $W$, and bias $b$, a
+linear layer first predicts unnormalized log probabilities:
+\begin{equation}
+  z = W^Th + b 
+\end{equation}
+
+where $z_i = \log \tilde{P}(y = i | x)$. The softmax function can then
+exponentiate and normalize $z$ to obtain the desired $\hat{y}$. The
+softmax function is given by
+\begin{equation}
+  \func{softmax}(z)_i = \frac{\exp(z_i)}{\sum_j \exp(z_j)}.
+\end{equation}
+
+As a cost function, we wish to maximize
+$\log P(y=i; z) = \log \func{softmax}(z)_i$. We can do this formally as
+\begin{equation}
+  \log \func{softmax}(z)_i = z_i - \log \sum_j \exp(z_j).
+\end{equation}
+
+which gives us the intuition for a single example. Overall, we want to learn
+parameters that drive the softmax to predict the fraction of counts of each
+outcome observed in the training set \cite{Goodfellow-et-al-2016}:
+\begin{equation}
+  \func{softmax}(z(x;\theta))_i \approx \frac{\sum_{j=1}^m 1_{y^{(j)} = i,
+      x^{(j)} = x}}{\sum_{j=1}^m 1_{x^{(j)} = x}}.
+\end{equation}
+
+This is how the $\func{categorical\_crossetropy}(\text{y\_true}, \text{y\_pred})$ function is constructed in Keras \cite{chollet2015keras} as well as the
+$\func{softmax\_cross\_entropy\_with\_logits\_v2}(\text{labels}, \text{logits})$
+in Tensorflow \cite{tensorflow2015-whitepaper}. 
+
+\subsubsection{Understanding the Optimization Technique}
+
+This course discussed optimization algorithms such as Stochastic Gradient
+Descent ($m =1$) and Batch Gradient Descent ($m=n \text{ obs.}$). Current
+best practices for Neural Networks recommend Mini-Batch Gradient Descent
+($m = c \text{ batch size}$). In practice, we use the Adam optimization
+algorithm due to faster computation time. The Adam optimization algorithm
+is able to achieve a speedup due to its combination of two other techniques.
+
+The Adam optimization algorithm takes an exponentially weighted average of
+the gradients, a technique called momentum, and then uses that gradient to
+update your weights. Secondly, we also want to slow down gradient descent in
+the horizontal direction with a technique called RMSprop to reduce
+oscillations from batch gradient descent. The Adam optimization method is
+combining momentum and RMSprop to perform gradient descent more quickly
+\cite{DeepLear51:online}.
 
 \subsubsection{Convolutional Neural Network (CNN)}
 
@@ -137,10 +193,11 @@ TODO: more context would be helpful here, maybe some citations
 \subsection{Data}
 
 Google originally collected the data from users by explicitly asking users to
-draw objects like forks, hotdogs, etc. The original dataset is 70 GB in size
-but Google also provides a simplified version of the dataset- consisting only
-of the final images. We used these '.npy' files to train all of our models.
-These numpy bitmap files consist of more than 100,000 rows each and 784
+draw objects like forks, hotdogs, etc \cite{QuickDra91:online}. The original
+dataset is 70 GB in size but Google also provides a simplified version of the
+dataset- consisting only of the final images \cite{googlecr61:online}. We
+used these '.npy' files to train all of our models. These numpy bitmap files
+consist of more than 100,000 rows each and 784
 features, since they are basically $28 \times 28$ images. Samples of these
 images are shown in Figure \ref{fig:quickImages}. The subset of this
 dataset sampled varies from experiment to experiment. More details can be
@@ -154,6 +211,13 @@ found in the experiments mentioned below.
   \label{fig:quickImages}
 \end{figure}
 
+Our analysis required us to use a subset of this data. Our dataset sample
+selected for this experiment had 10 categories: fish, fork, hotdog, flamingo,
+airplane, alarm clock, baseball bat, bicycle, dolphin, elephant. We had
+100,000 examples in total, with 10,000 example for each of the aforementioned
+categories.
+
+
 \section{Results}
 
 We report our results by examining the validity of each hypothesis.
@@ -161,11 +225,8 @@ We report our results by examining the validity of each hypothesis.
 \subsection{Addressing model component of performance}
 
 In order to perform this experiment we built a fully connected neural network
-using tensorflow. Our dataset sample selected for this experiment had 10
-categories: fish, fork, hotdog, flamingo, airplane, alarm clock, baseball bat,
-bicycle, dolphin, elephant. We had 100,000 examples in total, with 10,000
-example for each of the aforementioned categories. Our train:test split was
-chosen to be 80:20, an industry standard. 
+using tensorflow. Our train:test split was chosen to be 80:20, an industry
+standard. 
 
 Our initial objective was to build a model that overfit our given dataset,
 with the idea that once our model is complex enough to overfit the training
@@ -212,57 +273,6 @@ the activation function owing to ReLU’s faster convergence.
   \label{fig:cnnArch}
 \end{figure}
 
-\subsubsection{Understanding the Loss Function}
-
-Most modern neural networks are trained using maximum likelihood. This
-means that the cost function is the negative log-likelihood, also
-described as the cross-entropy between the training data and the model
-distribution \cite{Goodfellow-et-al-2016}. In our use case, we are interested
-in correctly classifying 10 categories of drawings. Our output unit
-use a Softmax function in our output layer because they are most often
-used for classifiers representing the probability distribution over
-$n$ different classes. Given features $h$, weights $W$, and bias $b$, a
-linear layer first predicts unnormalized log probabilities:
-\begin{equation}
-  z = W^Th + b 
-\end{equation}
-
-where $z_i = \log \tilde{P}(y = i | x)$. The softmax function can then
-exponentiate and normalize $z$ to obtain the desired $\hat{y}$. The
-softmax function is given by
-\begin{equation}
-  \func{softmax}(z)_i = \frac{\exp(z_i)}{\sum_j \exp(z_j)}.
-\end{equation}
-
-As a cost function, we wish to maximize
-$\log P(y=i; z) = \log \func{softmax}(z)_i$. We can do this formally as
-\begin{equation}
-  \log \func{softmax}(z)_i = z_i - \log \sum_j \exp(z_j).
-\end{equation}
-
-which gives us the intuition for a single example. Overall, we want to learn
-parameters that drive the softmax to predict the fraction of counts of each
-outcome observed in the training set \cite{Goodfellow-et-al-2016}:
-\begin{equation}
-  \func{softmax}(z(x;\theta))_i \approx \frac{\sum_{j=1}^m 1_{y^{(j)} = i,
-      x^{(j)} = x}}{\sum_{j=1}^m 1_{x^{(j)} = x}}.
-\end{equation}
-
-This is how the $\func{categorical\_crossetropy}(\text{y\_true}, \text{y\_pred})$ function is constructed in Keras \cite{chollet2015keras} as well as the
-$\func{softmax\_cross\_entropy\_with\_logits\_v2}(\text{labels}, \text{logits})$
-in Tensorflow \cite{tensorflow2015-whitepaper}. 
-
-\subsubsection{Understanding the Optimization Technique}
-
-There are a number of different optimization methods such as Stochastic
-and Batch Gradient descent. In practice, we chose to use a faster variant
-of gradient descent called Adam. The Adam optimization is able to use
-an exponentially weighted average of the gradients, a technique called
-momentum, and then use that gradient to update your weights instead. We
-also want to slow down gradient descent in the horizontal direction, a
-technique called RMSprop), to reduce oscillations from batch gradient descent.
-The Adam optimization method is combining momentum and RMSprop to perform
-gradient descent more quickly \cite{DeepLear51:online}.
 
 
 Number of Trainable Parameters: 320,890
