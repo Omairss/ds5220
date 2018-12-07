@@ -91,20 +91,135 @@ layers. In this project, we attempt to understand these topics in depth
 from an empirical stanpoint in relation to image classification using
 Google's ``Quick, Draw!'' dataset.
 
-
 \section{Methods}
 
-\subsection{EDA}
+We generate a series of hypotheses to inform our analysis.
+
+\subsection{Hypotheses}
+
+We start off with hypothesis that we learnt from theoretical literature. We
+then perform several experiments to test the validity of these hypothesis and
+report out our findings. Some of our hypothesis is as follows:
+
+1) Fully connected neural network will struggle to get reasonable accuracy.
+In contrast CNN’s should perform better and faster than a Fully connected
+neural network.
+
+2) Training a deep neural network with limited data will result in
+overfitting. Conversely, adding more data to a deep neural network is an
+effective way to manage variance.
+
+3) Imbalance class prediction can be improved using data augmentation.
+
+4) Increasing the number of categories will cause a significant drop in the
+performance of the neural network. Increasing the overall data points for the
+network to be trained on should help. 
+
+
+\subsection{Data}
+
+Google originally collected the data from users by explicitly asking them to
+draw objects like forks, hotdogs, etc. The original dataset is 70 GB in size
+but Google also provides a simplified version of the dataset- consisting only
+of the final images. We used these '.npy' files to train all of our models.
+These numpy bitmap files consist of more than 100,000 rows each and 784
+features, since they are basically $28 \times 28$ images. Samples of these
+images are shown in Figure \ref{fig:quickImages}. The subset of this
+dataset sampled varies from experiment to experiment. More details can be
+found in the experiments mentioned below.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.5]{fig1}
+  \end{center}
+  \caption{Sample images from Quick, Draw! dataset}
+  \label{fig:quickImages}
+  \end{figure}
 
 
 \section{Results}
 
+\subsection{Hypothesis 1}
 
-\subsection{Image Classification using Humans}
+Hypothesis 1: Fully connected neural network will struggle to get reasonable
+accuracy. In contrast CNN’s should perform better and faster than a Fully
+connected neural network.
 
-\subsection{Fully Connected Neural Network}
+In order to perform this experiment we built a fully connected neural network
+using tensorflow. Our dataset sample selected for this experiment had 10
+categories: fish, fork, hotdog, flamingo, airplane, alarm clock, baseball bat,
+bicycle, dolphin, elephant. We had 100,000 examples in total, with 10,000
+example for each of the aforementioned categories. Our train:test split was
+chosen to be 80:20, an industry standard. 
 
-\subsection{Convolutional Neural Network}
+Our initial objective was to build a model that overfit our given dataset,
+with the idea that once our model is complex enough to overfit the training
+data, we could regularize it in order to achieve a more optimal fit.
+
+After experimenting with various architectures, we narrowed down to a 3 layer
+model as specified in Figure \ref{fig:fcnn}.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.75]{fig2}
+    \end{center}
+  \caption{Fully Connected Neural Network Architecture}
+  \label{fig:fcnn}
+  \end{figure}
+
+The training set accuracy observed was 93\%, while the test accuracy was at
+73\%, which clearly indicated an overfit in the model, as designed.
+
+The model took 1500 epochs to converge taking around ~45 minutes on a machine with 13 GB of RAM, Intel Xeon CPU 2.3 GHz (1 core, 2 threads), 1xTesla K80 GPU having 2496 CUDA cores with 12 GB GDDR5 VRAM. In order to manage variance, we attempted regularizing using dropouts. Unfortunately, that effort was futile. We then doubled the amount of data sampled to train the model, eventually helping us achieve training set accuracy of 86\% and test set accuracy of 82\%. Our
+learning rate was specified as 0.001.
+
+While our initial hypothesis assumed that a regular fully connected network would struggle to achieve a reasonable accuracy, our experiment proved our hypothesis as invalid by achieving a commendable accuracy. Having said that, the model did take a longer to converge than expected.
+
+As for the CNN, we started off with the same approach with attempting to overfit the model using convolution operations and a fully connected layer. Since our objective is to categorise 10 categories, softmax was chosen as the activation function for the final layer, while every other neuron had ReLU as the activation function owing to ReLU’s faster convergence.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{fig3}
+    \end{center}
+  \caption{CNN Architecture}
+  \label{fig:cnnArch}
+\end{figure}
+
+Loss Function: Categorical Cross Entropy [TO DO: Why?]
+Optimizer: [TODO: Why?]
+Number of Trainable Parameters: 320,890
+
+
+The number of clearly being much greater than the number of observations used to train the model, we need to reduce the number of parameters vis-a-vis number of observations. From the available strategies to do so, we incorporated MaxPooling [TO DO: why?] post each convolution operation, in order to extract only the most significant features. As as a consequence, this reduced the volume of the output, giving the model a smaller memory footprint as well as a smaller number of trainable parameters.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{fig4}
+  \end{center}
+  \caption{CNN Architecture with Reduced Parameters}
+  \label{fig:cnnArchPool}
+\end{figure}
+
+The observable training accuracy is 0.90, whereas the validation accuracy is 0.89. The model converged after 10 epochs, which took ~ 3 minutes.
+
+Some of the other unsuccessful strategies used to decrease the number of parameters and to regularize the network were strides and dropouts which sacrificed way too much in the way of accuracy and thus had to be dropped. Since most of our drawings had most of their information in the center of the image, padding, in theory wouldn’t be of much help. However, actually implementing padding improved our accuracy by 1\% at a cost of ~6000 parameters.
+
+
+Conclusion
+
+A slight (~5\%) improvement in the accuracy of a CNN when compared to a fully connected network, keeping the number of parameters constant, was observed. However, the CNN happened to be around 13 times faster in practice. This delta in accuracy and speed is likely to be amplified as we scale the model up with respect to model complexity or data.
+
+\subsection{Hypothesis 2}
+
+Hypothesis 2: Training a deep neural network with limited data will result in overfitting. Conversely, adding more data to a deep neural network is an effective way to manage variance.
+
+With us reaching an optimal model for the dataset, we decided to study the effect of reduction in the sampled dataset and its relationship with overfitting. 
+
+\subsection{Hypothesis 3}
+
+
+We tried to show the importance of having equal partitions of data to train a machine learning model. Imbalanced classes can make a model biased toward the majority class.  
+
 
 \section{Discussion}
 
