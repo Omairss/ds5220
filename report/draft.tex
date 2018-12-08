@@ -108,10 +108,9 @@ Most modern neural networks are trained using maximum likelihood. This
 means that the cost function is the negative log-likelihood, also
 described as the cross-entropy between the training data and the model
 distribution \cite{Goodfellow-et-al-2016}. In our use case, we are interested
-in correctly classifying 10 categories of drawings. Our output unit
-use a Softmax function in our output layer because they are most often
-used for classifiers representing the probability distribution over
-$n$ different classes. Given features $h$, weights $W$, and bias $b$, a
+in correctly classifying 10 categories of drawings. Our output layer
+uses a Softmax function to represent the probability distribution over
+$k$ different classes. Given features $h$, weights $W$, and bias $b$, a
 linear layer first predicts unnormalized log probabilities:
 \begin{equation}
   z = W^Th + b 
@@ -174,15 +173,15 @@ CNN architectures are usually composed of the building blocks as described
 below:
 
 \begin{enumerate}
-\item \textbf{Convolution:} Convolution operation helps to extract features
-  from the input image. The ﬁrst argument to the convolution is often referred
-  to as the input , the second argument as the feature detector (kernel) and
-  the output as the feature map. The convolution operation takes the dot
-  product of feature map and the input to detect features. Since each
-  convolution operation only focuses on a part of an image enabling parameter
-  sharing which helps to reduce the number of free parameters compared to a
-  fully connected neural network, allowing the network to be deeper with
-  fewer parameters.
+\item \textbf{Convolution:} The convolution operation helps to extract features
+  from the input image. The first argument is often referred
+  to as the input. The second is a feature detector (kernel) and
+  the output is the feature map. The convolution operation takes the dot
+  product of the feature detector and the input. Each convolution operation
+  focuses on a subset of an image. This approach allows for parameter
+  sharing which leads to a reduction in parameters relative to a
+  fully connected neural network. The advantage 
+  is that we can have a deeper network with fewer parameters.
 
   \begin{itemize}
   \item \textbf{Strides:} Stride is the number of pixels jumps between
@@ -190,7 +189,7 @@ below:
     is 1 then we move the filters to 1 pixel at a time. Increasing the stride
     parameter reduces the output volume of the convolution since the jumps
     are larger.
-  \item \textbf{Padding:}Padding helps to detect features present at the
+  \item \textbf{Padding:} Padding helps to detect features present at the
     border by adding a dummy values around the edge. Since convolution
     operations collect most information from the center of the image, adding
     padding allows the border pixels to be weighed more during the convolution
@@ -209,9 +208,8 @@ below:
   pixel values (3) Sum Pooling. sum of all pixels values. See figure
   \ref{fig:CNNPooling} for a visualization of a Pooling Layer.
 
-\item \textbf{Fully Connected Layer:} The layer we call as FC layer, we
-  flattened our matrix into vector and feed it into a fully connected layer
-  like neural network.
+\item \textbf{Fully Connected (FC) Layer:} The FC layer flattens our
+  matrix into vector and feeds it into a fully connected neural network layer.
   \end{enumerate}
 
 \subsection{Hypotheses}
@@ -265,9 +263,8 @@ found in the experiments mentioned below.
 Our analysis required us to use a subset of this data. Our dataset sample
 selected for this experiment had 10 categories: fish, fork, hotdog, flamingo,
 airplane, alarm clock, baseball bat, bicycle, dolphin, elephant. We had
-100,000 examples in total, with 10,000 example for each of the aforementioned
+100,000 examples in total, with 10,000 examples for each of the aforementioned
 categories.
-
 
 \subsection{Modeling Strategy}
 
@@ -389,31 +386,24 @@ distribution of data.
 
 \subsubsection{$H3_a$\: Small amounts of data will lead to overfitting}
 
-As found in the experiments, after decreasing the amount of data resulted
+As found in the experiments, decreasing the amount of data resulted
 in overfitting thereby confirming our hypothesis. Figure \ref{fig:h3Results}
-contains a table with results for various number $n$ of observations.
-We increased the number of categories the Neural Network had to model,
-holding the number of examples per categories constant. Observations were
-increased in steps of 1,000 from $n=7000$ to $n=20,000$ examples. The
-number of categories $k$ ranged from $k=3$ to $k=10$ in steps of 1.
+contains a table with results for various number $n$ of observations. We
+can see in Figure \ref{fig:h3Results} that increasing the number of
+observations enables us tune a well-trained model.
 
 \subsubsection{$H4_a$\: Imbalanced class prediction can be improved using
   data augmentation}
 
-Results can be seen in the Appendix with Figure \ref{fig:h4Results}.
-Increasing the number of categories will cause a significant drop in the
-performance of the neural network. Increasing the overall data points for
-the network to be trained on should help. 
+We found that imbalanced class prediction can be improved by adding more
+data to the minority class. As shown in Figure \ref{fig:h4Results}, 
 
-We try and understand the limits and capacity of the finalized model by
-varying the number of categories and the number of rows per category. We
-then measure the response accuracy and response loss of the model. The
-number of rows per category is altered in steps of 1000 from 7,000 to 20,000
-and the number of categories is altered in steps of 1 from 3 to 10.
+shows us that
 
-3 examples of the accuracy measurements with most rows (14,000), least rows
-(2,000) and intermediate rows (7,000) and their performance per every
-additional category is plotted below.
+a
+decrease in class imbalance leads to an increase in prediction accuracy
+for the minority class. These predictions were based on 20,000 total
+samples which were previously unseen.
 
 \subsubsection{$H5_a$ \& $H6_a$\: Addition of a category to the trained model
   will reduce the performance of the model/Adding more training data will
