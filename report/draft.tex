@@ -373,11 +373,11 @@ Having said that, the model did take a longer to converge than expected.
 \subsubsection{$H2_a$\: CNN should perform better than fully connected neural
   network}
 
-A slight (~5\%) improvement in the accuracy of a CNN when compared to a fully
-connected network, keeping the number of parameters constant, was observed.
-However, the CNN happened to be around 13 times faster in practice. This
-delta in accuracy and speed is likely to be amplified as we scale the model
-up with respect to model complexity or data.
+We found a slight (~5\%) improvement in the accuracy of a CNN when compared
+to a similarly parameterized fully connected neural network. However, training
+time for the CNN was about 13 times faster in practice. The difference in
+accuracy and speed is likely to be amplified as we scale the model up in
+respect to complexity of amount of data.
 
 \subsection{Addressing data component of performance}
 
@@ -401,9 +401,9 @@ shows results that support this assertion by gradually decreasing the class
 imbalance by increasing the number of samples within the minority class.
 Minority class accuracy ranged from 43\% with a 1:500 class imbalance to
 98\% with a 1:1 class imbalance.These predictions were based on 20,000 total
-samples which were previously unseen. The neural network models we
-tested tended to generalize well on the most important weights, while
-attempting to classify only the minority categories.
+samples which were previously unseen. Neural network models tend to
+generalize well on the most important weights, while attempting to classify
+only the minority categories.
 
 \subsubsection{$H5_a$ \& $H6_a$\: Addition of a category to the trained model
   will reduce the performance of the model/Adding more training data will
@@ -415,7 +415,7 @@ data are under Figure \ref{fig:h6Results} in the Appendix. It can be
 interpreted from the regression that for every additional category,
 we can expect the test accuracy go down by 1.88\% and test loss to go up by
 6.4\% while for every additional datapoint, we can expect the accuracy to go
-up by .0016\% and loss to go down by .0056\%. Both results are statistically
+up by 0.0016\% and loss to go down by 0.0056\%. Both results are statistically
 significant with reasonably tight confidence intervals and standard errors.
 
 \section{Discussion}
