@@ -354,6 +354,13 @@ the data with an OLS regression.
 We report our results by examining the validity of each hypothesis
 related to the model and data components of performance.
 
+\subsection{Baseline image classification using humans}
+
+Our baseline performance when manually classifying images into one
+of 10 categories is 87\% accuracy on average. We consider this accuracy to
+be ``reasonable accuracy''. The accuracy serves as a baseline for informing
+our understanding of results for our models.
+
 \subsection{Addressing model component of performance}
 
 These results pertain to hypotheses effected by modeling choices.
@@ -393,11 +400,20 @@ number of categories $k$ ranged from $k=3$ to $k=10$ in steps of 1.
 \subsubsection{$H4_a$\: Imbalanced class prediction can be improved using
   data augmentation}
 
-Results can be seen in the Appendix with Figure \ref{fig:h4Results}. 
-We get unexpectedly high accuracy of 43\% even in the worst case of 1:500
-imbalance in the categories while attempting to classify only the minority
-categories. This is because neural networks tend to generalize well on the
-most important weights.
+Results can be seen in the Appendix with Figure \ref{fig:h4Results}.
+Increasing the number of categories will cause a significant drop in the
+performance of the neural network. Increasing the overall data points for
+the network to be trained on should help. 
+
+We try and understand the limits and capacity of the finalized model by
+varying the number of categories and the number of rows per category. We
+then measure the response accuracy and response loss of the model. The
+number of rows per category is altered in steps of 1000 from 7,000 to 20,000
+and the number of categories is altered in steps of 1 from 3 to 10.
+
+3 examples of the accuracy measurements with most rows (14,000), least rows
+(2,000) and intermediate rows (7,000) and their performance per every
+additional category is plotted below.
 
 \subsubsection{$H5_a$ \& $H6_a$\: Addition of a category to the trained model
   will reduce the performance of the model/Adding more training data will
@@ -414,12 +430,38 @@ significant with reasonably tight confidence intervals and standard errors.
 
 \section{Discussion}
 
-Talk about our final slide and tie the hypotheses together
+Our hypotheses explored how modeling choices and data distribution affect
+the accuracy performance. We found convolutional neural networks to be a
+good approach for classifying spatial data like images. Convolutional neural
+networks gave a better accuracy than humans which in turn was better than
+accuracy by fully connected neural networks. 
+
+In terms of modeling choices, Fully connected neural network(FC-NN)
+performed reasonably well for the Quick Draw dataset classification. We
+noted that Convolutional Neural network’s(CNN) training and testing accuracy
+was 5 percent better than the FC-NN. Additionally,  CNN was 13 times faster
+to train than FC-NN. These results highlighted the optimizations done by
+CNN with local connectivity and parameter sharing. The change in accuracy
+and speed is likely to be amplified as we scale the model up with respect
+to model complexity or data.
+
+In terms of data distribution, we noted that for every additional category
+added to the finalized model architecture resulted in a 1.88\% decrease in
+test accuracy. Training the model on an imbalanced distribution of classes
+resulted in a poor prediction accuracy for the minority class. The
+prediction accuracy for the minority class increased as the imbalance in
+the training dataset decreased.
+
+In the future, we would like to make use of the time-series data for the
+drawings to predict the object while it is being drawn.
+
 
 \bibliographystyle{unsrt}
 \bibliography{references}
 
 \section{Appendix}
+
+Our project code is available in a GitHub repo: ``https://github.com/tbonza/ds5220''.
 
 % Stats summary figures
 
@@ -483,7 +525,8 @@ Talk about our final slide and tie the hypotheses together
   \begin{center}
     \includegraphics[scale=0.5]{fig8}
     \end{center}
-  \caption{$H3_a$ Results for various size training data}
+  \caption{$H3_a$ Results for various size training data at (epoch 1,
+    epoch 10)}
   \label{fig:h3Results}
   \end{figure}
 

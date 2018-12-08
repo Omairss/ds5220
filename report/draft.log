@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 DEC 2018 18:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  7 DEC 2018 20:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -320,7 +320,7 @@ File: ./imgs/fig1.png Graphic file (type png)
 <use ./imgs/fig1.png>
 Package pdftex.def Info: ./imgs/fig1.png  used on input line 259.
 (pdftex.def)             Requested size: 289.58116pt x 77.28854pt.
- [4 <./imgs/fig1.png>] [5] [6] (./draft.bbl
+ [4 <./imgs/fig1.png>] [5] [6] [7] (./draft.bbl
 ! Undefined control sequence.
 l.7 \newblock \url
                   {http://www.deeplearningbook.org}.
@@ -339,7 +339,6 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[7]
 ! Undefined control sequence.
 l.31 \newblock \url
                    {https://www.coursera.org/specializations/deep-learning},...
@@ -374,107 +373,108 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 )
-<./imgs/fig5.png, id=41, 637.38126pt x 221.82875pt>
+<./imgs/fig5.png, id=40, 637.38126pt x 221.82875pt>
 File: ./imgs/fig5.png Graphic file (type png)
 <use ./imgs/fig5.png>
-Package pdftex.def Info: ./imgs/fig5.png  used on input line 428.
+Package pdftex.def Info: ./imgs/fig5.png  used on input line 470.
 (pdftex.def)             Requested size: 318.68985pt x 110.9141pt.
-<./imgs/fig6.png, id=42, 632.3625pt x 168.63pt>
+ [8]
+<./imgs/fig6.png, id=45, 632.3625pt x 168.63pt>
 File: ./imgs/fig6.png Graphic file (type png)
 <use ./imgs/fig6.png>
-Package pdftex.def Info: ./imgs/fig6.png  used on input line 436.
+Package pdftex.def Info: ./imgs/fig6.png  used on input line 478.
 (pdftex.def)             Requested size: 316.18048pt x 84.31479pt.
-<./imgs/fig7.png, id=43, 607.26875pt x 285.065pt>
+<./imgs/fig7.png, id=46, 607.26875pt x 285.065pt>
 File: ./imgs/fig7.png Graphic file (type png)
 <use ./imgs/fig7.png>
-Package pdftex.def Info: ./imgs/fig7.png  used on input line 444.
+Package pdftex.def Info: ./imgs/fig7.png  used on input line 486.
 (pdftex.def)             Requested size: 303.63364pt x 142.53215pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<./imgs/fig2.png, id=44, 594.22pt x 196.735pt>
+<./imgs/fig2.png, id=47, 594.22pt x 196.735pt>
 File: ./imgs/fig2.png Graphic file (type png)
 <use ./imgs/fig2.png>
-Package pdftex.def Info: ./imgs/fig2.png  used on input line 454.
+Package pdftex.def Info: ./imgs/fig2.png  used on input line 496.
 (pdftex.def)             Requested size: 445.66391pt x 147.55087pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./imgs/fig3.png, id=45, 637.38126pt x 104.39pt>
+<./imgs/fig3.png, id=48, 637.38126pt x 104.39pt>
 File: ./imgs/fig3.png Graphic file (type png)
 <use ./imgs/fig3.png>
-Package pdftex.def Info: ./imgs/fig3.png  used on input line 464.
+Package pdftex.def Info: ./imgs/fig3.png  used on input line 506.
 (pdftex.def)             Requested size: 318.68985pt x 52.19485pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./imgs/fig4.png, id=46, 634.37pt x 100.375pt>
+<./imgs/fig4.png, id=49, 634.37pt x 100.375pt>
 File: ./imgs/fig4.png Graphic file (type png)
 <use ./imgs/fig4.png>
-Package pdftex.def Info: ./imgs/fig4.png  used on input line 473.
+Package pdftex.def Info: ./imgs/fig4.png  used on input line 515.
 (pdftex.def)             Requested size: 317.18422pt x 50.18736pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./imgs/fig8.png, id=47, 636.3775pt x 261.97874pt>
+<./imgs/fig8.png, id=50, 636.3775pt x 261.97874pt>
 File: ./imgs/fig8.png Graphic file (type png)
 <use ./imgs/fig8.png>
-Package pdftex.def Info: ./imgs/fig8.png  used on input line 484.
+Package pdftex.def Info: ./imgs/fig8.png  used on input line 526.
 (pdftex.def)             Requested size: 318.18797pt x 130.98904pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./imgs/fig9.png, id=48, 631.35875pt x 140.525pt>
+<./imgs/fig9.png, id=51, 631.35875pt x 140.525pt>
 File: ./imgs/fig9.png Graphic file (type png)
 <use ./imgs/fig9.png>
-Package pdftex.def Info: ./imgs/fig9.png  used on input line 494.
+Package pdftex.def Info: ./imgs/fig9.png  used on input line 537.
 (pdftex.def)             Requested size: 315.6786pt x 70.26231pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./imgs/fig10.png, id=49, 611.28375pt x 352.31625pt>
+<./imgs/fig10.png, id=52, 611.28375pt x 352.31625pt>
 File: ./imgs/fig10.png Graphic file (type png)
 <use ./imgs/fig10.png>
-Package pdftex.def Info: ./imgs/fig10.png  used on input line 504.
+Package pdftex.def Info: ./imgs/fig10.png  used on input line 547.
 (pdftex.def)             Requested size: 305.64113pt x 176.15768pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./imgs/fig11.png, id=50, 622.325pt x 368.37625pt>
+<./imgs/fig11.png, id=53, 622.325pt x 368.37625pt>
 File: ./imgs/fig11.png Graphic file (type png)
 <use ./imgs/fig11.png>
-Package pdftex.def Info: ./imgs/fig11.png  used on input line 514.
+Package pdftex.def Info: ./imgs/fig11.png  used on input line 557.
 (pdftex.def)             Requested size: 311.16173pt x 184.18767pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8 <./imgs/fig5.png> <./imgs/fig6.png>] [9 <./imgs/fig7.png> <./imgs/fig2.png> 
-<./imgs/fig3.png> <./imgs/fig4.png>] [10 <./imgs/fig8.png> <./imgs/fig9.png> <.
-/imgs/fig10.png>] [11 <./imgs/fig11.png>] (./draft.aux) ) 
+[9 <./imgs/fig5.png> <./imgs/fig6.png> <./imgs/fig7.png>] [10 <./imgs/fig2.png>
+ <./imgs/fig3.png> <./imgs/fig4.png> <./imgs/fig8.png>] [11 <./imgs/fig9.png> <
+./imgs/fig10.png> <./imgs/fig11.png>] (./draft.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  4300 strings out of 492649
  61557 string characters out of 6129622
- 135453 words of memory out of 5000000
+ 134455 words of memory out of 5000000
  8106 multiletter control sequences out of 15000+600000
  11698 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,7n,39p,324b,285s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/20
-18/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2018/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2018/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2018/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb>
-Output written on draft.pdf (11 pages, 1572117 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
+e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on draft.pdf (11 pages, 1574306 bytes).
 PDF statistics:
  115 PDF objects out of 1000 (max. 8388607)
  66 compressed objects within 1 object stream
