@@ -395,15 +395,15 @@ observations enables us tune a well-trained model.
 \subsubsection{$H4_a$\: Imbalanced class prediction can be improved using
   data augmentation}
 
-We found that imbalanced class prediction can be improved by adding more
-data to the minority class. As shown in Figure \ref{fig:h4Results}, 
-
-shows us that
-
-a
-decrease in class imbalance leads to an increase in prediction accuracy
-for the minority class. These predictions were based on 20,000 total
-samples which were previously unseen.
+We are able to confirm that adding data to the minority class to reduce
+class imbalance increases prediction accuracy. Figure \ref{fig:h4Results}
+shows results that support this assertion by gradually decreasing the class
+imbalance by increasing the number of samples within the minority class.
+Minority class accuracy ranged from 43\% with a 1:500 class imbalance to
+98\% with a 1:1 class imbalance.These predictions were based on 20,000 total
+samples which were previously unseen. The neural network models we
+tested tended to generalize well on the most important weights, while
+attempting to classify only the minority categories.
 
 \subsubsection{$H5_a$ \& $H6_a$\: Addition of a category to the trained model
   will reduce the performance of the model/Adding more training data will
